@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Protea
 {
-    //Drop Sfe Entry
+    //Drop Safe Entry
     class DropSafeEntry
     {
         public long EntryID;
