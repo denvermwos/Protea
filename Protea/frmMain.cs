@@ -15,7 +15,7 @@ namespace Protea
     {
         public string UserName;
         public int UserID;
-        
+        //test
         public bool IsAdmin;
         public bool cboxTransTypeDoneLoading = false;
         public User cbUser;
