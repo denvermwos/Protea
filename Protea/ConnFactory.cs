@@ -12,7 +12,7 @@ namespace Protea
         public static SqlConnection GetConnection()
         {
             //SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Protea\Protea\Protea.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
-            SqlConnection conn = new SqlConnection(@"Data Source=tcp:PROTEASERVER,1433;Database=Protea;User Id=sa;Password=shift1234;");
+            SqlConnection conn = new SqlConnection(@"Data Source=tcp:192.168.0.85,1433;Database=Protea;User Id=sa;Password=shift1234;");
             return conn;
             
         }
