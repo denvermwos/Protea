@@ -213,6 +213,62 @@ namespace Protea
 
         }
 
+        public static List<TransType> GetTransTypesWithPUser()
+        {
+            List<TransType> result = new List<TransType>();
+            SqlConnection GetTransTypesConn = ConnFactory.GetConnection();
+
+            try
+            {
+                GetTransTypesConn.Open();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+
+
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM TransTypes  WHERE NeedsPUser = 'true' ORDER BY cast(TransDescription as varchar(500))", GetTransTypesConn);
+
+
+            try
+            {
+                SqlDataReader myReader = null;
+                myReader = myCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    int transtypeid = Convert.ToInt32(myReader["TransTypeID"]);
+                    string transdescription = myReader["TransDescription"].ToString();
+                    bool recon = Convert.ToBoolean(myReader["Recon"]);
+                    bool dropsafe = Convert.ToBoolean(myReader["DropSafe"]);
+                    bool needspbranch = Convert.ToBoolean(myReader["NeedsPBranch"]);
+                    bool needspuser = Convert.ToBoolean(myReader["NeedsPUser"]);
+                    result.Add(new TransType(transtypeid, transdescription, recon, dropsafe, needspbranch, needspuser));
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+            try
+            {
+                GetTransTypesConn.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+
+            return result;
+
+        }
 
         public override string ToString()
         {

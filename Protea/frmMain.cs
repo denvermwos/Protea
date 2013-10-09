@@ -259,28 +259,28 @@ namespace Protea
                 comboBoxTransactionTotalByPBranchFilter.Items.Add(item);
             }
 
-            if (cboxTransType.Items.Count != 0)
+            if (comboBoxTransactionTotalByPBranchFilter.Items.Count != 0)
             {
-                cboxTransType.SelectedIndex = 0;
+                comboBoxTransactionTotalByPBranchFilter.SelectedIndex = 0;
             }
         }
         private void PopulateComboboxTransactionTotalByPUserFilter()
         {
-            comboBoxTransactionTotalByPBranchFilter.Items.Clear();
+            comboBoxTransactionTotalByPUserFilter.Items.Clear();
 
 
-            List<TransType> transTypeList = TransType.GetTransTypesWithPBranch();
+            List<TransType> transTypeList = TransType.GetTransTypesWithPUser();
 
 
             for (int i = 0; i < transTypeList.Count(); i++)
             {
                 TransType item = transTypeList[i];
-                comboBoxTransactionTotalByPBranchFilter.Items.Add(item);
+                comboBoxTransactionTotalByPUserFilter.Items.Add(item);
             }
 
-            if (cboxTransType.Items.Count != 0)
+            if (comboBoxTransactionTotalByPUserFilter.Items.Count != 0)
             {
-                cboxTransType.SelectedIndex = 0;
+                comboBoxTransactionTotalByPUserFilter.SelectedIndex = 0;
             }
         }
         private void PopulateDorCCombobox()
