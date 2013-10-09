@@ -108,15 +108,15 @@
             this.cboxTransType = new System.Windows.Forms.ComboBox();
             this.comboBoxPUsersForCashbookEntryCapture = new System.Windows.Forms.ComboBox();
             this.cboxPBranch = new System.Windows.Forms.ComboBox();
-            this.labelPUser = new System.Windows.Forms.Label();
             this.labelPBranch = new System.Windows.Forms.Label();
+            this.labelPUser = new System.Windows.Forms.Label();
             this.tcProtea = new System.Windows.Forms.TabControl();
             this.tabPageTransactionTotalByPBranch = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerPBranchAuditStart = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDoPBranchAudit = new System.Windows.Forms.Button();
             this.dateTimePickerPBranchAuditEnd = new System.Windows.Forms.DateTimePicker();
             this.comboBoxTransactionTotalByPBranchFilter = new System.Windows.Forms.ComboBox();
             this.dataGridViewTransactionByPBranch = new System.Windows.Forms.DataGridView();
@@ -124,6 +124,18 @@
             this.ColumnTotalFromPBranchsCashbook = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotalFromCashbook = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNetOfBranchAndPBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageTrancactionTotalByPUser = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dateTimePickerPUserAuditStart = new System.Windows.Forms.DateTimePicker();
+            this.buttonDoPUserAudit = new System.Windows.Forms.Button();
+            this.dateTimePickerPUserAuditEnd = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxTransactionTotalByPUserFilter = new System.Windows.Forms.ComboBox();
+            this.dataGridViewTransactionByPUser = new System.Windows.Forms.DataGridView();
+            this.ColumnPUserStaffNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPUserTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGroups = new System.Windows.Forms.Button();
             this.gbEditEntities = new System.Windows.Forms.GroupBox();
             this.gbBranch = new System.Windows.Forms.GroupBox();
@@ -132,17 +144,6 @@
             this.labelCashbookBalance = new System.Windows.Forms.Label();
             this.textBoxCashbookBalance = new System.Windows.Forms.TextBox();
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
-            this.tabPageTrancactionTotalByPUser = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnPUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPUserTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -160,11 +161,11 @@
             this.tabPageTransactionTotalByPBranch.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPBranch)).BeginInit();
+            this.tabPageTrancactionTotalByPUser.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).BeginInit();
             this.gbEditEntities.SuspendLayout();
             this.gbBranch.SuspendLayout();
-            this.tabPageTrancactionTotalByPUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUsers
@@ -927,6 +928,16 @@
             this.cboxPBranch.TabIndex = 11;
             this.cboxPBranch.Validating += new System.ComponentModel.CancelEventHandler(this.cboxPBranch_Validating);
             // 
+            // labelPBranch
+            // 
+            this.labelPBranch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelPBranch.AutoSize = true;
+            this.labelPBranch.Location = new System.Drawing.Point(482, 24);
+            this.labelPBranch.Name = "labelPBranch";
+            this.labelPBranch.Size = new System.Drawing.Size(48, 13);
+            this.labelPBranch.TabIndex = 12;
+            this.labelPBranch.Text = "PBranch";
+            // 
             // labelPUser
             // 
             this.labelPUser.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -937,16 +948,6 @@
             this.labelPUser.TabIndex = 16;
             this.labelPUser.Text = "PUser";
             this.labelPUser.Visible = false;
-            // 
-            // labelPBranch
-            // 
-            this.labelPBranch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelPBranch.AutoSize = true;
-            this.labelPBranch.Location = new System.Drawing.Point(482, 24);
-            this.labelPBranch.Name = "labelPBranch";
-            this.labelPBranch.Size = new System.Drawing.Size(48, 13);
-            this.labelPBranch.TabIndex = 12;
-            this.labelPBranch.Text = "PBranch";
             // 
             // tcProtea
             // 
@@ -983,7 +984,7 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.dateTimePickerPBranchAuditStart);
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.buttonDoPBranchAudit);
             this.groupBox4.Controls.Add(this.dateTimePickerPBranchAuditEnd);
             this.groupBox4.Controls.Add(this.comboBoxTransactionTotalByPBranchFilter);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
@@ -1018,15 +1019,15 @@
             this.dateTimePickerPBranchAuditStart.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerPBranchAuditStart.TabIndex = 8;
             // 
-            // button1
+            // buttonDoPBranchAudit
             // 
-            this.button1.Location = new System.Drawing.Point(832, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.buttonDoPBranchAudit.Location = new System.Drawing.Point(832, 15);
+            this.buttonDoPBranchAudit.Name = "buttonDoPBranchAudit";
+            this.buttonDoPBranchAudit.Size = new System.Drawing.Size(90, 23);
+            this.buttonDoPBranchAudit.TabIndex = 10;
+            this.buttonDoPBranchAudit.Text = "Search";
+            this.buttonDoPBranchAudit.UseVisualStyleBackColor = true;
+            this.buttonDoPBranchAudit.Click += new System.EventHandler(this.buttonDoPBranchAudit_Click);
             // 
             // dateTimePickerPBranchAuditEnd
             // 
@@ -1090,6 +1091,123 @@
             this.ColumnNetOfBranchAndPBranch.HeaderText = "Net";
             this.ColumnNetOfBranchAndPBranch.Name = "ColumnNetOfBranchAndPBranch";
             this.ColumnNetOfBranchAndPBranch.Width = 49;
+            // 
+            // tabPageTrancactionTotalByPUser
+            // 
+            this.tabPageTrancactionTotalByPUser.Controls.Add(this.groupBox5);
+            this.tabPageTrancactionTotalByPUser.Controls.Add(this.dataGridViewTransactionByPUser);
+            this.tabPageTrancactionTotalByPUser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTrancactionTotalByPUser.Name = "tabPageTrancactionTotalByPUser";
+            this.tabPageTrancactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
+            this.tabPageTrancactionTotalByPUser.TabIndex = 4;
+            this.tabPageTrancactionTotalByPUser.Text = "Transaction Total By PUser";
+            this.tabPageTrancactionTotalByPUser.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.dateTimePickerPUserAuditStart);
+            this.groupBox5.Controls.Add(this.buttonDoPUserAudit);
+            this.groupBox5.Controls.Add(this.dateTimePickerPUserAuditEnd);
+            this.groupBox5.Controls.Add(this.comboBoxTransactionTotalByPUserFilter);
+            this.groupBox5.Location = new System.Drawing.Point(8, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(941, 45);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filter";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(558, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "End Date";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(270, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Start Date";
+            // 
+            // dateTimePickerPUserAuditStart
+            // 
+            this.dateTimePickerPUserAuditStart.Location = new System.Drawing.Point(331, 18);
+            this.dateTimePickerPUserAuditStart.Name = "dateTimePickerPUserAuditStart";
+            this.dateTimePickerPUserAuditStart.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerPUserAuditStart.TabIndex = 8;
+            // 
+            // buttonDoPUserAudit
+            // 
+            this.buttonDoPUserAudit.Location = new System.Drawing.Point(832, 15);
+            this.buttonDoPUserAudit.Name = "buttonDoPUserAudit";
+            this.buttonDoPUserAudit.Size = new System.Drawing.Size(90, 23);
+            this.buttonDoPUserAudit.TabIndex = 10;
+            this.buttonDoPUserAudit.Text = "Search";
+            this.buttonDoPUserAudit.UseVisualStyleBackColor = true;
+            this.buttonDoPUserAudit.Click += new System.EventHandler(this.buttonDoPUserAudit_Click);
+            // 
+            // dateTimePickerPUserAuditEnd
+            // 
+            this.dateTimePickerPUserAuditEnd.Location = new System.Drawing.Point(616, 18);
+            this.dateTimePickerPUserAuditEnd.Name = "dateTimePickerPUserAuditEnd";
+            this.dateTimePickerPUserAuditEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerPUserAuditEnd.TabIndex = 9;
+            // 
+            // comboBoxTransactionTotalByPUserFilter
+            // 
+            this.comboBoxTransactionTotalByPUserFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxTransactionTotalByPUserFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxTransactionTotalByPUserFilter.FormattingEnabled = true;
+            this.comboBoxTransactionTotalByPUserFilter.Location = new System.Drawing.Point(6, 17);
+            this.comboBoxTransactionTotalByPUserFilter.Name = "comboBoxTransactionTotalByPUserFilter";
+            this.comboBoxTransactionTotalByPUserFilter.Size = new System.Drawing.Size(248, 21);
+            this.comboBoxTransactionTotalByPUserFilter.TabIndex = 7;
+            // 
+            // dataGridViewTransactionByPUser
+            // 
+            this.dataGridViewTransactionByPUser.AllowUserToAddRows = false;
+            this.dataGridViewTransactionByPUser.AllowUserToDeleteRows = false;
+            this.dataGridViewTransactionByPUser.AllowUserToResizeColumns = false;
+            this.dataGridViewTransactionByPUser.AllowUserToResizeRows = false;
+            this.dataGridViewTransactionByPUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewTransactionByPUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTransactionByPUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnPUserStaffNo,
+            this.ColumnPUserName,
+            this.ColumnPUserTotal});
+            this.dataGridViewTransactionByPUser.Location = new System.Drawing.Point(8, 54);
+            this.dataGridViewTransactionByPUser.Name = "dataGridViewTransactionByPUser";
+            this.dataGridViewTransactionByPUser.RowHeadersVisible = false;
+            this.dataGridViewTransactionByPUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTransactionByPUser.Size = new System.Drawing.Size(941, 305);
+            this.dataGridViewTransactionByPUser.TabIndex = 0;
+            // 
+            // ColumnPUserStaffNo
+            // 
+            this.ColumnPUserStaffNo.HeaderText = "Staff No";
+            this.ColumnPUserStaffNo.Name = "ColumnPUserStaffNo";
+            this.ColumnPUserStaffNo.Width = 71;
+            // 
+            // ColumnPUserName
+            // 
+            this.ColumnPUserName.HeaderText = "Name";
+            this.ColumnPUserName.Name = "ColumnPUserName";
+            this.ColumnPUserName.Width = 60;
+            // 
+            // ColumnPUserTotal
+            // 
+            this.ColumnPUserTotal.HeaderText = "Total";
+            this.ColumnPUserTotal.Name = "ColumnPUserTotal";
+            this.ColumnPUserTotal.Width = 56;
             // 
             // btnGroups
             // 
@@ -1171,115 +1289,6 @@
             this.timer30sec.Interval = 30000;
             this.timer30sec.Tick += new System.EventHandler(this.timer30sec_Tick);
             // 
-            // tabPageTrancactionTotalByPUser
-            // 
-            this.tabPageTrancactionTotalByPUser.Controls.Add(this.groupBox5);
-            this.tabPageTrancactionTotalByPUser.Controls.Add(this.dataGridView1);
-            this.tabPageTrancactionTotalByPUser.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTrancactionTotalByPUser.Name = "tabPageTrancactionTotalByPUser";
-            this.tabPageTrancactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
-            this.tabPageTrancactionTotalByPUser.TabIndex = 4;
-            this.tabPageTrancactionTotalByPUser.Text = "Transaction Total By PUser";
-            this.tabPageTrancactionTotalByPUser.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnPUserName,
-            this.ColumnPUserTotal});
-            this.dataGridView1.Location = new System.Drawing.Point(8, 54);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(941, 305);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // ColumnPUserName
-            // 
-            this.ColumnPUserName.HeaderText = "Name";
-            this.ColumnPUserName.Name = "ColumnPUserName";
-            this.ColumnPUserName.Width = 60;
-            // 
-            // ColumnPUserTotal
-            // 
-            this.ColumnPUserTotal.HeaderText = "Total";
-            this.ColumnPUserTotal.Name = "ColumnPUserTotal";
-            this.ColumnPUserTotal.Width = 56;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.dateTimePicker2);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Controls.Add(this.dateTimePicker3);
-            this.groupBox5.Controls.Add(this.comboBox1);
-            this.groupBox5.Location = new System.Drawing.Point(8, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(941, 45);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Filter";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(558, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "End Date";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(270, 22);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Start Date";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(331, 18);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 8;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(832, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(616, 18);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 9;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(248, 21);
-            this.comboBox1.TabIndex = 7;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,13 +1325,13 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPBranch)).EndInit();
+            this.tabPageTrancactionTotalByPUser.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).EndInit();
             this.gbEditEntities.ResumeLayout(false);
             this.gbBranch.ResumeLayout(false);
             this.gbBranch.PerformLayout();
-            this.tabPageTrancactionTotalByPUser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1398,7 +1407,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateTimePickerPBranchAuditStart;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDoPBranchAudit;
         private System.Windows.Forms.DateTimePicker dateTimePickerPBranchAuditEnd;
         private System.Windows.Forms.ComboBox comboBoxTransactionTotalByPBranchFilter;
         private System.Windows.Forms.ComboBox comboBoxPUsersForCashbookEntryCapture;
@@ -1422,11 +1431,12 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPUserAuditStart;
+        private System.Windows.Forms.Button buttonDoPUserAudit;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPUserAuditEnd;
+        private System.Windows.Forms.ComboBox comboBoxTransactionTotalByPUserFilter;
+        private System.Windows.Forms.DataGridView dataGridViewTransactionByPUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserStaffNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserTotal;
     }

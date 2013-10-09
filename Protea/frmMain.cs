@@ -264,6 +264,25 @@ namespace Protea
                 cboxTransType.SelectedIndex = 0;
             }
         }
+        private void PopulateComboboxTransactionTotalByPUserFilter()
+        {
+            comboBoxTransactionTotalByPBranchFilter.Items.Clear();
+
+
+            List<TransType> transTypeList = TransType.GetTransTypesWithPBranch();
+
+
+            for (int i = 0; i < transTypeList.Count(); i++)
+            {
+                TransType item = transTypeList[i];
+                comboBoxTransactionTotalByPBranchFilter.Items.Add(item);
+            }
+
+            if (cboxTransType.Items.Count != 0)
+            {
+                cboxTransType.SelectedIndex = 0;
+            }
+        }
         private void PopulateDorCCombobox()
         {
             cboxDorC.Items.Clear();
@@ -477,6 +496,29 @@ namespace Protea
                 branchrow.Tag = pBranchAudit;
 
                 dataGridViewTransactionByPBranch.Rows.Add(branchrow);
+            }
+        }
+
+        private void PopulateTransactionByPUserDatagridView()
+        {
+
+            dataGridViewTransactionByPUser.Rows.Clear();
+            List<PUserAudit> pUserAudits = PUserAudit.DoPUserAudit(cbUser.UserBranch, (TransType)comboBoxTransactionTotalByPUserFilter.SelectedItem, dateTimePickerPUserAuditStart.Value.Date, dateTimePickerPUserAuditEnd.Value.Date);
+
+            for (int i = 0; i < pUserAudits.Count(); i++)
+            {
+                PUserAudit pBranchAudit = pUserAudits.ToList()[i];
+                DataGridViewRow pUserRow = new DataGridViewRow();
+                pUserRow.CreateCells(dataGridViewTransactionByPUser);
+
+                pUserRow.Cells[ColumnPUserStaffNo.Index].Value = pBranchAudit.User.StaffNo.ToString();
+                pUserRow.Cells[ColumnPUserName.Index].Value = pBranchAudit.User.ToString();
+                pUserRow.Cells[ColumnPUserTotal.Index].Value = pBranchAudit.Total.ToString();
+                
+
+                pUserRow.Tag = pBranchAudit;
+
+                dataGridViewTransactionByPUser.Rows.Add(pUserRow);
             }
         }
         private CashbookEntry GetPageTotal()
@@ -759,6 +801,16 @@ namespace Protea
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonDoPUserAudit_Click(object sender, EventArgs e)
+        {
+            PopulateTransactionByPUserDatagridView();
+        }
+
+        private void buttonDoPBranchAudit_Click(object sender, EventArgs e)
         {
             PopulateTransactionByPBranchDatagridView();
         }
