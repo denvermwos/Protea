@@ -32,11 +32,11 @@
             this.txtTransTypeDescription = new System.Windows.Forms.TextBox();
             this.btnSaveTransaction = new System.Windows.Forms.Button();
             this.btnExitTransaction = new System.Windows.Forms.Button();
+            this.gbEntryTag = new System.Windows.Forms.GroupBox();
+            this.rbPUser = new System.Windows.Forms.RadioButton();
+            this.rbPBranch = new System.Windows.Forms.RadioButton();
             this.rbNone = new System.Windows.Forms.RadioButton();
-            this.rbDropSafe = new System.Windows.Forms.RadioButton();
-            this.rbRecon = new System.Windows.Forms.RadioButton();
-            this.gbCounterEntry = new System.Windows.Forms.GroupBox();
-            this.gbCounterEntry.SuspendLayout();
+            this.gbEntryTag.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,6 +76,40 @@
             this.btnExitTransaction.Text = "Exit";
             this.btnExitTransaction.UseVisualStyleBackColor = true;
             // 
+            // gbEntryTag
+            // 
+            this.gbEntryTag.Controls.Add(this.rbNone);
+            this.gbEntryTag.Controls.Add(this.rbPUser);
+            this.gbEntryTag.Controls.Add(this.rbPBranch);
+            this.gbEntryTag.Location = new System.Drawing.Point(12, 69);
+            this.gbEntryTag.Name = "gbEntryTag";
+            this.gbEntryTag.Size = new System.Drawing.Size(426, 51);
+            this.gbEntryTag.TabIndex = 7;
+            this.gbEntryTag.TabStop = false;
+            this.gbEntryTag.Text = "Entry Tag";
+            // 
+            // rbPUser
+            // 
+            this.rbPUser.AutoSize = true;
+            this.rbPUser.Location = new System.Drawing.Point(320, 19);
+            this.rbPUser.Name = "rbPUser";
+            this.rbPUser.Size = new System.Drawing.Size(54, 17);
+            this.rbPUser.TabIndex = 6;
+            this.rbPUser.Text = "PUser";
+            this.rbPUser.UseVisualStyleBackColor = true;
+            this.rbPUser.CheckedChanged += new System.EventHandler(this.rbRecon_CheckedChanged);
+            // 
+            // rbPBranch
+            // 
+            this.rbPBranch.AutoSize = true;
+            this.rbPBranch.Location = new System.Drawing.Point(166, 19);
+            this.rbPBranch.Name = "rbPBranch";
+            this.rbPBranch.Size = new System.Drawing.Size(66, 17);
+            this.rbPBranch.TabIndex = 5;
+            this.rbPBranch.Text = "PBranch";
+            this.rbPBranch.UseVisualStyleBackColor = true;
+            this.rbPBranch.CheckedChanged += new System.EventHandler(this.rbDropSafe_CheckedChanged);
+            // 
             // rbNone
             // 
             this.rbNone.AutoSize = true;
@@ -89,40 +123,6 @@
             this.rbNone.UseVisualStyleBackColor = true;
             this.rbNone.CheckedChanged += new System.EventHandler(this.rbNone_CheckedChanged);
             // 
-            // rbDropSafe
-            // 
-            this.rbDropSafe.AutoSize = true;
-            this.rbDropSafe.Location = new System.Drawing.Point(166, 19);
-            this.rbDropSafe.Name = "rbDropSafe";
-            this.rbDropSafe.Size = new System.Drawing.Size(73, 17);
-            this.rbDropSafe.TabIndex = 5;
-            this.rbDropSafe.Text = "Drop Safe";
-            this.rbDropSafe.UseVisualStyleBackColor = true;
-            this.rbDropSafe.CheckedChanged += new System.EventHandler(this.rbDropSafe_CheckedChanged);
-            // 
-            // rbRecon
-            // 
-            this.rbRecon.AutoSize = true;
-            this.rbRecon.Location = new System.Drawing.Point(320, 19);
-            this.rbRecon.Name = "rbRecon";
-            this.rbRecon.Size = new System.Drawing.Size(57, 17);
-            this.rbRecon.TabIndex = 6;
-            this.rbRecon.Text = "Recon";
-            this.rbRecon.UseVisualStyleBackColor = true;
-            this.rbRecon.CheckedChanged += new System.EventHandler(this.rbRecon_CheckedChanged);
-            // 
-            // gbCounterEntry
-            // 
-            this.gbCounterEntry.Controls.Add(this.rbNone);
-            this.gbCounterEntry.Controls.Add(this.rbRecon);
-            this.gbCounterEntry.Controls.Add(this.rbDropSafe);
-            this.gbCounterEntry.Location = new System.Drawing.Point(12, 69);
-            this.gbCounterEntry.Name = "gbCounterEntry";
-            this.gbCounterEntry.Size = new System.Drawing.Size(426, 51);
-            this.gbCounterEntry.TabIndex = 7;
-            this.gbCounterEntry.TabStop = false;
-            this.gbCounterEntry.Text = "Counter Entry";
-            // 
             // frmTransaction
             // 
             this.AcceptButton = this.btnSaveTransaction;
@@ -130,15 +130,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExitTransaction;
             this.ClientSize = new System.Drawing.Size(450, 158);
-            this.Controls.Add(this.gbCounterEntry);
+            this.Controls.Add(this.gbEntryTag);
             this.Controls.Add(this.btnExitTransaction);
             this.Controls.Add(this.btnSaveTransaction);
             this.Controls.Add(this.txtTransTypeDescription);
             this.Controls.Add(this.label1);
             this.Name = "frmTransaction";
             this.Text = "Transaction";
-            this.gbCounterEntry.ResumeLayout(false);
-            this.gbCounterEntry.PerformLayout();
+            this.gbEntryTag.ResumeLayout(false);
+            this.gbEntryTag.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,9 +150,9 @@
         private System.Windows.Forms.TextBox txtTransTypeDescription;
         private System.Windows.Forms.Button btnSaveTransaction;
         private System.Windows.Forms.Button btnExitTransaction;
+        private System.Windows.Forms.GroupBox gbEntryTag;
         private System.Windows.Forms.RadioButton rbNone;
-        private System.Windows.Forms.RadioButton rbDropSafe;
-        private System.Windows.Forms.RadioButton rbRecon;
-        private System.Windows.Forms.GroupBox gbCounterEntry;
+        private System.Windows.Forms.RadioButton rbPUser;
+        private System.Windows.Forms.RadioButton rbPBranch;
     }
 }

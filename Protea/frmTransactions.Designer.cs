@@ -32,8 +32,8 @@
             this.btnExitTransaction = new System.Windows.Forms.Button();
             this.dgvTransactions = new System.Windows.Forms.DataGridView();
             this.TransDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DropSafe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Recon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PBranch = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PUser = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,8 +65,8 @@
             this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TransDescription,
-            this.DropSafe,
-            this.Recon});
+            this.PBranch,
+            this.PUser});
             this.dgvTransactions.Location = new System.Drawing.Point(13, 43);
             this.dgvTransactions.MultiSelect = false;
             this.dgvTransactions.Name = "dgvTransactions";
@@ -85,23 +85,23 @@
             this.TransDescription.ReadOnly = true;
             this.TransDescription.Width = 85;
             // 
-            // DropSafe
+            // PBranch
             // 
-            this.DropSafe.HeaderText = "Drop Safe";
-            this.DropSafe.Name = "DropSafe";
-            this.DropSafe.ReadOnly = true;
-            this.DropSafe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DropSafe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DropSafe.Width = 80;
+            this.PBranch.HeaderText = "PBranch";
+            this.PBranch.Name = "PBranch";
+            this.PBranch.ReadOnly = true;
+            this.PBranch.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PBranch.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PBranch.Width = 73;
             // 
-            // Recon
+            // PUser
             // 
-            this.Recon.HeaderText = "Recon";
-            this.Recon.Name = "Recon";
-            this.Recon.ReadOnly = true;
-            this.Recon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Recon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Recon.Width = 64;
+            this.PUser.HeaderText = "PUser";
+            this.PUser.Name = "PUser";
+            this.PUser.ReadOnly = true;
+            this.PUser.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PUser.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PUser.Width = 61;
             // 
             // frmTransactions
             // 
@@ -125,7 +125,7 @@
         private System.Windows.Forms.Button btnExitTransaction;
         private System.Windows.Forms.DataGridView dgvTransactions;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransDescription;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DropSafe;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Recon;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PBranch;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PUser;
     }
 }

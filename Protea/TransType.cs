@@ -43,12 +43,14 @@ namespace Protea
                 using (var con = ConnFactory.GetConnection())
                 {
 
-                    var cmd = "BEGIN TRAN DECLARE @TID int; INSERT INTO TransTypes (TransDescription, Recon, DropSafe,NeedsPBranch) VALUES (@TransDescription, @Recon, @DropSafe, 'False'); SET @TID = scope_identity(); INSERT INTO BranchTransTypeBalance (BranchID, TransTypeID, BranchTransTypeBalanceAmount) SELECT BranchID, @TID AS TransTypeID, 0 AS BranchTransTypeBalanceAmount FROM Branches; SELECT @TID; COMMIT TRAN";
+                    var cmd = "BEGIN TRAN DECLARE @TID int; INSERT INTO TransTypes (TransDescription, Recon, DropSafe,NeedsPBranch,NeedsPUser) VALUES (@TransDescription, 'False', 'False', @NeedsPBranch,@NeedsPUser); SET @TID = scope_identity(); INSERT INTO BranchTransTypeBalance (BranchID, TransTypeID, BranchTransTypeBalanceAmount) SELECT BranchID, @TID AS TransTypeID, 0 AS BranchTransTypeBalanceAmount FROM Branches; SELECT @TID; COMMIT TRAN";
                     using (var insertCommand = new SqlCommand(cmd, con))
                     {
                         insertCommand.Parameters.AddWithValue("@TransDescription", TransDescription);
                         insertCommand.Parameters.AddWithValue("@Recon", Recon);
                         insertCommand.Parameters.AddWithValue("@DropSafe", DropSafe);
+                        insertCommand.Parameters.AddWithValue("@NeedsPBranch", NeedsPBranch);
+                        insertCommand.Parameters.AddWithValue("@NeedsPUser", NeedsPUser);
                         con.Open();
                         TransTypeID = (int)insertCommand.ExecuteScalar();
                         transTypeIsNew = false;

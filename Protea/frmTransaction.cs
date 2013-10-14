@@ -25,16 +25,20 @@ namespace Protea
             transType = transtypeBeingEdited;
             txtTransTypeDescription.Text = transType.TransDescription;
             rbNone.Checked = true;
-            if (transType.DropSafe)
+            if (transType.NeedsPBranch)
             {
-                rbDropSafe.Checked = true;
+                rbPBranch.Checked = true;
             }
-            if (transType.Recon)
+            else if (transType.NeedsPUser)
             {
-                rbRecon.Checked = true;
+                rbPUser.Checked = true;
+            }
+            else
+            {
+                rbNone.Checked = true;
             }
 
-            gbCounterEntry.Enabled = false;
+            gbEntryTag.Enabled = false;
 
         }
 
@@ -89,12 +93,12 @@ namespace Protea
             transType.DropSafe = false;
             transType.Recon = false;
 
-            if (rbDropSafe.Checked == true)
+            if (rbPBranch.Checked == true)
             {
                 transType.DropSafe = true;
                 transType.Recon = false;
             }
-            if (rbRecon.Checked == true)
+            if (rbPUser.Checked == true)
             {
                 transType.DropSafe = false;
                 transType.Recon = true;

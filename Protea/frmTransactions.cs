@@ -29,8 +29,8 @@ namespace Protea
                 transtyperow.CreateCells(dgvTransactions);
 
                 transtyperow.Cells[dgvTransactions.Columns["TransDescription"].Index].Value = temptransaction.TransDescription;
-                transtyperow.Cells[dgvTransactions.Columns["DropSafe"].Index].Value = temptransaction.DropSafe;
-                transtyperow.Cells[dgvTransactions.Columns["Recon"].Index].Value = temptransaction.Recon;
+                transtyperow.Cells[dgvTransactions.Columns["PBranch"].Index].Value = temptransaction.NeedsPBranch;
+                transtyperow.Cells[dgvTransactions.Columns["PUser"].Index].Value = temptransaction.NeedsPUser;
                 transtyperow.Tag = temptransaction;
 
                 dgvTransactions.Rows.Add(transtyperow);

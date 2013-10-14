@@ -137,7 +137,7 @@ namespace Protea
             PopulateTransactionsCombobox(cboxTransTypeFilter, true);
 
             PopulateComboboxTransactionTotalByPBranchFilter();
-
+            PopulateComboboxTransactionTotalByPUserFilter();
             cboxTransTypeFilter.SelectedIndex = 0;
 
             PopulateDorCCombobox();
@@ -189,7 +189,7 @@ namespace Protea
             {
                 try
                 {
-                    CashbookEntry cb = new CashbookEntry(((Branch)(cboxBranch.SelectedItem)), ((Branch)(cboxPBranch.SelectedItem)), cbUser, ((User)(comboBoxPUsersForCashbookEntryCapture.SelectedItem)),((TransType)cboxTransType.SelectedItem), txtCBDescription.Text, ((cboxDCItem)(cboxDorC.SelectedItem)).DorCInt * Convert.ToDecimal(txtCBAmount.Text), "");
+                    CashbookEntry cb = new CashbookEntry(((Branch)(cboxBranch.SelectedItem)), ((Branch)(comboBoxPBranchForCashbookEntryCapture.SelectedItem)), cbUser, ((User)(comboBoxPUsersForCashbookEntryCapture.SelectedItem)),((TransType)cboxTransType.SelectedItem), txtCBDescription.Text, ((cboxDCItem)(cboxDorC.SelectedItem)).DorCInt * Convert.ToDecimal(txtCBAmount.Text), "");
                     long newID = cb.Create();
 
                     txtCBDescription.Text = "";
@@ -206,6 +206,7 @@ namespace Protea
             {
                 MessageBox.Show(err);
             }
+
             PopulateUserRecon();
             UpdateCashbookBalanceAndDropSafe();
         }
@@ -233,12 +234,12 @@ namespace Protea
                 cboxTransType.SelectedIndex = 0;
                 if (((TransType)cboxTransType.SelectedItem).NeedsPBranch)
                 {
-                    cboxPBranch.Visible = true;
+                    comboBoxPBranchForCashbookEntryCapture.Visible = true;
                     labelPBranch.Visible = true;
                 }
                 else
                 {
-                    cboxPBranch.Visible = false;
+                    comboBoxPBranchForCashbookEntryCapture.Visible = false;
                     labelPBranch.Visible = false;
                 }
 
@@ -334,15 +335,15 @@ namespace Protea
             {
                 if (((TransType)cboxTransType.SelectedItem).NeedsPBranch)
                 {
-                    cboxPBranch.Visible = true;
+                    comboBoxPBranchForCashbookEntryCapture.Visible = true;
                     labelPBranch.Visible = true;
                 }
                 else
                 {
-                    cboxPBranch.Visible = false;
+                    comboBoxPBranchForCashbookEntryCapture.Visible = false;
                     labelPBranch.Visible = false;
-                    cboxPBranch.SelectedItem = null;
-                    cboxPBranch.Text = "";
+                    comboBoxPBranchForCashbookEntryCapture.SelectedItem = null;
+                    comboBoxPBranchForCashbookEntryCapture.Text = "";
                 }
 
                 if (((TransType)cboxTransType.SelectedItem).NeedsPUser)
@@ -381,12 +382,12 @@ namespace Protea
         {
 
 
-            cboxPBranch.Items.Clear();
+            comboBoxPBranchForCashbookEntryCapture.Items.Clear();
             List<Branch> branches = Branch.GetPBranches(cbUser.UserBranch);
             for (int i = 0; i < branches.Count(); i++)
             {
                 Branch tempBranch = branches.ToList()[i];
-                cboxPBranch.Items.Add(tempBranch);
+                comboBoxPBranchForCashbookEntryCapture.Items.Add(tempBranch);
             }
             //selectItemInCboxBranch(cbUser.UserBranch);
         }
@@ -634,6 +635,15 @@ namespace Protea
         {
             string result = "";
             decimal d;
+            if ((comboBoxPUsersForCashbookEntryCapture.SelectedIndex == -1) && ((TransType)cboxTransType.SelectedItem).NeedsPUser)
+            {
+                result += "\nA Valid PUser needs to be selected";
+            }
+
+            if ((comboBoxPBranchForCashbookEntryCapture.SelectedIndex == -1) && ((TransType)cboxTransType.SelectedItem).NeedsPBranch)
+            {
+                result += "\nA Valid PBranch needs to be selected";
+            }
 
             if (!decimal.TryParse(txtCBAmount.Text, out d) && (txtCBAmount.Text != ""))
             {
@@ -791,12 +801,11 @@ namespace Protea
 
         private void cboxPBranch_Validating(object sender, CancelEventArgs e)
         {
-            if (cboxPBranch.SelectedItem == null)
+            if (comboBoxPBranchForCashbookEntryCapture.SelectedItem == null)
             {
-                if (cboxPBranch.Items.Count == 0)
-                {
-                    cboxPBranch.SelectedIndex = 0;
-                }
+                
+                comboBoxPBranchForCashbookEntryCapture.SelectedIndex = 0;
+                
             }
         }
 
@@ -813,6 +822,30 @@ namespace Protea
         private void buttonDoPBranchAudit_Click(object sender, EventArgs e)
         {
             PopulateTransactionByPBranchDatagridView();
+        }
+
+        private void comboBoxPUsersForCashbookEntryCapture_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboBoxPUsersForCashbookEntryCapture.SelectedItem == null)
+            {
+                comboBoxPUsersForCashbookEntryCapture.SelectedIndex = 0;
+            }
+        }
+
+        private void comboBoxTransactionTotalByPBranchFilter_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboBoxTransactionTotalByPBranchFilter.SelectedItem == null)
+            {
+                comboBoxTransactionTotalByPBranchFilter.SelectedIndex = 0;
+            }
+        }
+
+        private void comboBoxTransactionTotalByPUserFilter_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboBoxTransactionTotalByPUserFilter.SelectedItem == null)
+            {
+                comboBoxTransactionTotalByPUserFilter.SelectedIndex = 0;
+            }
         }
 
 
