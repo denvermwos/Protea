@@ -87,6 +87,17 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.cboxTransTypeFilter = new System.Windows.Forms.ComboBox();
             this.dgvCashbookEntries = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateandTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BranchCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PBranchCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTransactionListPUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntryType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScannedFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CapturedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -95,10 +106,10 @@
             this.btnSubmitTransaction = new System.Windows.Forms.Button();
             this.cboxDorC = new System.Windows.Forms.ComboBox();
             this.cboxTransType = new System.Windows.Forms.ComboBox();
-            this.comboBoxPUsersForCashbookEntryCapture = new System.Windows.Forms.ComboBox();
             this.comboBoxPBranchForCashbookEntryCapture = new System.Windows.Forms.ComboBox();
             this.labelPBranch = new System.Windows.Forms.Label();
             this.labelPUser = new System.Windows.Forms.Label();
+            this.comboBoxPUsersForCashbookEntryCapture = new System.Windows.Forms.ComboBox();
             this.tcProtea = new System.Windows.Forms.TabControl();
             this.tabPageTransactionTotalByPBranch = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -133,17 +144,6 @@
             this.labelCashbookBalance = new System.Windows.Forms.Label();
             this.textBoxCashbookBalance = new System.Windows.Forms.TextBox();
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateandTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BranchCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PBranchCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTransactionListPUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EntryType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScannedFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CapturedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -210,7 +210,7 @@
             // 
             // cboxBranch
             // 
-            this.cboxBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboxBranch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboxBranch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboxBranch.FormattingEnabled = true;
             this.cboxBranch.Location = new System.Drawing.Point(58, 24);
@@ -719,6 +719,103 @@
             this.dgvCashbookEntries.StandardTab = true;
             this.dgvCashbookEntries.TabIndex = 16;
             // 
+            // id
+            // 
+            this.id.Frozen = true;
+            this.id.HeaderText = "Transaction ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.id.Width = 102;
+            // 
+            // DateandTime
+            // 
+            this.DateandTime.Frozen = true;
+            this.DateandTime.HeaderText = "Date and Time";
+            this.DateandTime.Name = "DateandTime";
+            this.DateandTime.ReadOnly = true;
+            this.DateandTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DateandTime.Width = 83;
+            // 
+            // BranchCol
+            // 
+            this.BranchCol.Frozen = true;
+            this.BranchCol.HeaderText = "Branch";
+            this.BranchCol.Name = "BranchCol";
+            this.BranchCol.ReadOnly = true;
+            this.BranchCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.BranchCol.Width = 47;
+            // 
+            // PBranchCol
+            // 
+            this.PBranchCol.Frozen = true;
+            this.PBranchCol.HeaderText = "#Branch";
+            this.PBranchCol.Name = "PBranchCol";
+            this.PBranchCol.ReadOnly = true;
+            this.PBranchCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PBranchCol.Width = 54;
+            // 
+            // ColumnTransactionListPUser
+            // 
+            this.ColumnTransactionListPUser.HeaderText = "#User";
+            this.ColumnTransactionListPUser.Name = "ColumnTransactionListPUser";
+            this.ColumnTransactionListPUser.ReadOnly = true;
+            this.ColumnTransactionListPUser.Width = 61;
+            // 
+            // EntryType
+            // 
+            this.EntryType.HeaderText = "Type";
+            this.EntryType.Name = "EntryType";
+            this.EntryType.ReadOnly = true;
+            this.EntryType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EntryType.Width = 37;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Description.Width = 66;
+            // 
+            // Amount
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            this.Amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Amount.Width = 49;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Total.Width = 37;
+            // 
+            // ScannedFile
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ScannedFile.DefaultCellStyle = dataGridViewCellStyle12;
+            this.ScannedFile.HeaderText = "Scanned File";
+            this.ScannedFile.Name = "ScannedFile";
+            this.ScannedFile.ReadOnly = true;
+            this.ScannedFile.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ScannedFile.Width = 75;
+            // 
+            // CapturedBy
+            // 
+            this.CapturedBy.HeaderText = "Captured By";
+            this.CapturedBy.Name = "CapturedBy";
+            this.CapturedBy.ReadOnly = true;
+            this.CapturedBy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CapturedBy.Width = 71;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(385, 206);
@@ -762,7 +859,8 @@
             this.txtCBAmount.Location = new System.Drawing.Point(739, 19);
             this.txtCBAmount.Name = "txtCBAmount";
             this.txtCBAmount.Size = new System.Drawing.Size(108, 20);
-            this.txtCBAmount.TabIndex = 13;
+            this.txtCBAmount.TabIndex = 15;
+            this.txtCBAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
             // txtCBDescription
             // 
@@ -772,6 +870,7 @@
             this.txtCBDescription.Name = "txtCBDescription";
             this.txtCBDescription.Size = new System.Drawing.Size(245, 20);
             this.txtCBDescription.TabIndex = 10;
+            this.txtCBDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
             // btnSubmitTransaction
             // 
@@ -779,7 +878,7 @@
             this.btnSubmitTransaction.Location = new System.Drawing.Point(853, 17);
             this.btnSubmitTransaction.Name = "btnSubmitTransaction";
             this.btnSubmitTransaction.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmitTransaction.TabIndex = 14;
+            this.btnSubmitTransaction.TabIndex = 16;
             this.btnSubmitTransaction.Text = "Submit";
             this.btnSubmitTransaction.UseVisualStyleBackColor = true;
             this.btnSubmitTransaction.Click += new System.EventHandler(this.btnSubmitTransaction_Click);
@@ -792,7 +891,8 @@
             this.cboxDorC.Location = new System.Drawing.Point(664, 19);
             this.cboxDorC.Name = "cboxDorC";
             this.cboxDorC.Size = new System.Drawing.Size(69, 21);
-            this.cboxDorC.TabIndex = 12;
+            this.cboxDorC.TabIndex = 14;
+            this.cboxDorC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
             // cboxTransType
             // 
@@ -805,20 +905,8 @@
             this.cboxTransType.Size = new System.Drawing.Size(187, 21);
             this.cboxTransType.TabIndex = 11;
             this.cboxTransType.SelectedIndexChanged += new System.EventHandler(this.cboxTransType_SelectedIndexChanged);
+            this.cboxTransType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             this.cboxTransType.Validating += new System.ComponentModel.CancelEventHandler(this.cboxTransType_Validating);
-            // 
-            // comboBoxPUsersForCashbookEntryCapture
-            // 
-            this.comboBoxPUsersForCashbookEntryCapture.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxPUsersForCashbookEntryCapture.FormattingEnabled = true;
-            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(534, 19);
-            this.comboBoxPUsersForCashbookEntryCapture.Name = "comboBoxPUsersForCashbookEntryCapture";
-            this.comboBoxPUsersForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPUsersForCashbookEntryCapture.TabIndex = 17;
-            this.comboBoxPUsersForCashbookEntryCapture.Visible = false;
-            this.comboBoxPUsersForCashbookEntryCapture.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxPUsersForCashbookEntryCapture_Validating);
             // 
             // comboBoxPBranchForCashbookEntryCapture
             // 
@@ -829,7 +917,8 @@
             this.comboBoxPBranchForCashbookEntryCapture.Location = new System.Drawing.Point(534, 19);
             this.comboBoxPBranchForCashbookEntryCapture.Name = "comboBoxPBranchForCashbookEntryCapture";
             this.comboBoxPBranchForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPBranchForCashbookEntryCapture.TabIndex = 11;
+            this.comboBoxPBranchForCashbookEntryCapture.TabIndex = 12;
+            this.comboBoxPBranchForCashbookEntryCapture.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             this.comboBoxPBranchForCashbookEntryCapture.Validating += new System.ComponentModel.CancelEventHandler(this.cboxPBranch_Validating);
             // 
             // labelPBranch
@@ -840,7 +929,7 @@
             this.labelPBranch.Name = "labelPBranch";
             this.labelPBranch.Size = new System.Drawing.Size(48, 13);
             this.labelPBranch.TabIndex = 12;
-            this.labelPBranch.Text = "PBranch";
+            this.labelPBranch.Text = "#Branch";
             // 
             // labelPUser
             // 
@@ -850,8 +939,22 @@
             this.labelPUser.Name = "labelPUser";
             this.labelPUser.Size = new System.Drawing.Size(36, 13);
             this.labelPUser.TabIndex = 16;
-            this.labelPUser.Text = "PUser";
+            this.labelPUser.Text = "#User";
             this.labelPUser.Visible = false;
+            // 
+            // comboBoxPUsersForCashbookEntryCapture
+            // 
+            this.comboBoxPUsersForCashbookEntryCapture.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxPUsersForCashbookEntryCapture.FormattingEnabled = true;
+            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(534, 19);
+            this.comboBoxPUsersForCashbookEntryCapture.Name = "comboBoxPUsersForCashbookEntryCapture";
+            this.comboBoxPUsersForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPUsersForCashbookEntryCapture.TabIndex = 13;
+            this.comboBoxPUsersForCashbookEntryCapture.Visible = false;
+            this.comboBoxPUsersForCashbookEntryCapture.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
+            this.comboBoxPUsersForCashbookEntryCapture.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxPUsersForCashbookEntryCapture_Validating);
             // 
             // tcProtea
             // 
@@ -878,7 +981,7 @@
             this.tabPageTransactionTotalByPBranch.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageTransactionTotalByPBranch.Size = new System.Drawing.Size(956, 362);
             this.tabPageTransactionTotalByPBranch.TabIndex = 3;
-            this.tabPageTransactionTotalByPBranch.Text = "Transaction Total By PBranch";
+            this.tabPageTransactionTotalByPBranch.Text = "Transaction Total By #Branch";
             this.tabPageTransactionTotalByPBranch.UseVisualStyleBackColor = true;
             // 
             // groupBox4
@@ -970,18 +1073,19 @@
             this.dataGridViewTransactionByPBranch.Location = new System.Drawing.Point(6, 57);
             this.dataGridViewTransactionByPBranch.Name = "dataGridViewTransactionByPBranch";
             this.dataGridViewTransactionByPBranch.RowHeadersVisible = false;
+            this.dataGridViewTransactionByPBranch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTransactionByPBranch.Size = new System.Drawing.Size(944, 312);
             this.dataGridViewTransactionByPBranch.TabIndex = 0;
             // 
             // ColumnPBranch
             // 
-            this.ColumnPBranch.HeaderText = "TBranch";
+            this.ColumnPBranch.HeaderText = "#Branch";
             this.ColumnPBranch.Name = "ColumnPBranch";
             this.ColumnPBranch.Width = 73;
             // 
             // ColumnTotalFromPBranchsCashbook
             // 
-            this.ColumnTotalFromPBranchsCashbook.HeaderText = "Total From TBranch\'s Cashbook";
+            this.ColumnTotalFromPBranchsCashbook.HeaderText = "Total From #Branch\'s Cashbook";
             this.ColumnTotalFromPBranchsCashbook.Name = "ColumnTotalFromPBranchsCashbook";
             this.ColumnTotalFromPBranchsCashbook.Width = 184;
             // 
@@ -1005,7 +1109,7 @@
             this.tabPageTrancactionTotalByPUser.Name = "tabPageTrancactionTotalByPUser";
             this.tabPageTrancactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
             this.tabPageTrancactionTotalByPUser.TabIndex = 4;
-            this.tabPageTrancactionTotalByPUser.Text = "Transaction Total By PUser";
+            this.tabPageTrancactionTotalByPUser.Text = "Transaction Total By #User";
             this.tabPageTrancactionTotalByPUser.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -1198,103 +1302,6 @@
             this.timer30sec.Interval = 30000;
             this.timer30sec.Tick += new System.EventHandler(this.timer30sec_Tick);
             // 
-            // id
-            // 
-            this.id.Frozen = true;
-            this.id.HeaderText = "Transaction ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.id.Width = 102;
-            // 
-            // DateandTime
-            // 
-            this.DateandTime.Frozen = true;
-            this.DateandTime.HeaderText = "Date and Time";
-            this.DateandTime.Name = "DateandTime";
-            this.DateandTime.ReadOnly = true;
-            this.DateandTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DateandTime.Width = 83;
-            // 
-            // BranchCol
-            // 
-            this.BranchCol.Frozen = true;
-            this.BranchCol.HeaderText = "Branch";
-            this.BranchCol.Name = "BranchCol";
-            this.BranchCol.ReadOnly = true;
-            this.BranchCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.BranchCol.Width = 47;
-            // 
-            // PBranchCol
-            // 
-            this.PBranchCol.Frozen = true;
-            this.PBranchCol.HeaderText = "PBranch";
-            this.PBranchCol.Name = "PBranchCol";
-            this.PBranchCol.ReadOnly = true;
-            this.PBranchCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PBranchCol.Width = 54;
-            // 
-            // ColumnTransactionListPUser
-            // 
-            this.ColumnTransactionListPUser.HeaderText = "PUser";
-            this.ColumnTransactionListPUser.Name = "ColumnTransactionListPUser";
-            this.ColumnTransactionListPUser.ReadOnly = true;
-            this.ColumnTransactionListPUser.Width = 61;
-            // 
-            // EntryType
-            // 
-            this.EntryType.HeaderText = "Type";
-            this.EntryType.Name = "EntryType";
-            this.EntryType.ReadOnly = true;
-            this.EntryType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.EntryType.Width = 37;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Description.Width = 66;
-            // 
-            // Amount
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            this.Amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Amount.Width = 49;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Total.Width = 37;
-            // 
-            // ScannedFile
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ScannedFile.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ScannedFile.HeaderText = "Scanned File";
-            this.ScannedFile.Name = "ScannedFile";
-            this.ScannedFile.ReadOnly = true;
-            this.ScannedFile.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ScannedFile.Width = 75;
-            // 
-            // CapturedBy
-            // 
-            this.CapturedBy.HeaderText = "Captured By";
-            this.CapturedBy.Name = "CapturedBy";
-            this.CapturedBy.ReadOnly = true;
-            this.CapturedBy.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CapturedBy.Width = 71;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1418,10 +1425,6 @@
         private System.Windows.Forms.ComboBox comboBoxTransactionTotalByPBranchFilter;
         private System.Windows.Forms.ComboBox comboBoxPUsersForCashbookEntryCapture;
         private System.Windows.Forms.Label labelPUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPBranch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromPBranchsCashbook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromCashbook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNetOfBranchAndPBranch;
         private System.Windows.Forms.TabPage tabPageTrancactionTotalByPUser;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
@@ -1445,6 +1448,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScannedFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn CapturedBy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPBranch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromPBranchsCashbook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromCashbook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNetOfBranchAndPBranch;
     }
 }
 

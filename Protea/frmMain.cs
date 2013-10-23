@@ -19,7 +19,7 @@ namespace Protea
         public bool cboxTransTypeDoneLoading = false;
         public User cbUser;
         public bool CurrentCBLocked = true;
-        private Dictionary<string, int> branchesDict = new Dictionary<string, int>();
+        //private Dictionary<string, int> branchesDict = new Dictionary<string, int>();
         private bool cboxBranchesDoneLoading = false;
 
         public frmMain()
@@ -46,7 +46,7 @@ namespace Protea
         }
         private void ApplyAccess()
         {
-            if (!cbUser.UserGroup.GroupsAccessDict["Branch Cashbook and Drop Figures"].HasAccess)
+            if (!cbUser.UserGroup.GroupsAccessDict["Branch Cashbook and Drop Figures Display"].HasAccess)
             {
                 tcProtea.TabPages.Remove(tcProtea.TabPages["tpBranchCashbookAndDropFigures"]);
 
@@ -128,7 +128,7 @@ namespace Protea
         private void LoadDataToControls()
         {
             FormHeaderText();
-            ColumnTotalFromCashbook.HeaderText = "Total from " + cbUser.UserBranch.BranchName + "'s Cashbook";
+            
             dataGridViewTransactionByPBranch.Rows.Clear();
             cboxTransTypeDoneLoading = false;
             PopulateTransactionsCombobox(cboxTransType, false);
@@ -145,9 +145,19 @@ namespace Protea
 
             LoadBranchSpecificDataToControls();
         }
-
+        private void ClearDataGrids()
+        {
+            dgvCashbookEntries.Rows.Clear();
+            dgvReconCompleted.Rows.Clear();
+            dgvReconPending.Rows.Clear();
+            dgvBranchBalances.Rows.Clear();
+            dataGridViewTransactionByPBranch.Rows.Clear();
+            dataGridViewTransactionByPUser.Rows.Clear();
+        }
         private void LoadBranchSpecificDataToControls()
         {
+            ClearDataGrids();
+            ColumnTotalFromCashbook.HeaderText = "Total from " + cbUser.UserBranch.BranchName + "'s Cashbook";
             PopulateUserBox(cboxTransferPartner, false);
             PopulateUserBox(cboxReconUserBeingViewed, true);
             PopulatePUserBox();
@@ -437,8 +447,8 @@ namespace Protea
                     row.Cells[dgvCashbookEntries.Columns["id"].Index].Value = tempCashbookEntry.EntryID.ToString("0000000000");
                     row.Cells[dgvCashbookEntries.Columns["DateandTime"].Index].Value = tempCashbookEntry.EntryDate.ToString("ddd dd MMM HH:mm");
                     row.Cells[dgvCashbookEntries.Columns["BranchCol"].Index].Value = tempCashbookEntry.CBEBranch.BranchName;
-                    row.Cells[dgvCashbookEntries.Columns["TBranchCol"].Index].Value = tempCashbookEntry.BranchTag.BranchName;
-                    row.Cells[ColumnTransactionListTUser.Index].Value = tempCashbookEntry.UserTag.FName + " " + tempCashbookEntry.UserTag.LName;
+                    row.Cells[dgvCashbookEntries.Columns["PBranchCol"].Index].Value = tempCashbookEntry.BranchTag.BranchName;
+                    row.Cells[ColumnTransactionListPUser.Index].Value = tempCashbookEntry.UserTag.FName + " " + tempCashbookEntry.UserTag.LName;
                     row.Cells[dgvCashbookEntries.Columns["EntryType"].Index].Value = tempCashbookEntry.TransType.ToString();
                     row.Cells[dgvCashbookEntries.Columns["Description"].Index].Value = tempCashbookEntry.EntryDescription.ToString();
                     row.Cells[dgvCashbookEntries.Columns["Amount"].Index].Value = tempCashbookEntry.Amount.ToString();
@@ -848,7 +858,19 @@ namespace Protea
             }
         }
 
+        private void txtCBDescription_KeyDown(object sender, KeyEventArgs e)
+        {
 
+        }
+        private void EnterToNextControlHandler(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                e.Handled = true;
+                (this).SelectNextControl((Control)sender, true, true, true, false);
+            }
+        }
+        
 
 
 
