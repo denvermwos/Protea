@@ -124,7 +124,7 @@
             this.ColumnTotalFromPBranchsCashbook = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotalFromCashbook = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNetOfBranchAndPBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageTrancactionTotalByPUser = new System.Windows.Forms.TabPage();
+            this.tabPageTransactionTotalByPUser = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -161,7 +161,7 @@
             this.tabPageTransactionTotalByPBranch.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPBranch)).BeginInit();
-            this.tabPageTrancactionTotalByPUser.SuspendLayout();
+            this.tabPageTransactionTotalByPUser.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).BeginInit();
             this.gbEditEntities.SuspendLayout();
@@ -965,7 +965,7 @@
             this.tcProtea.Controls.Add(this.tpRecon);
             this.tcProtea.Controls.Add(this.tpBranchCashbookAndDropFigures);
             this.tcProtea.Controls.Add(this.tabPageTransactionTotalByPBranch);
-            this.tcProtea.Controls.Add(this.tabPageTrancactionTotalByPUser);
+            this.tcProtea.Controls.Add(this.tabPageTransactionTotalByPUser);
             this.tcProtea.Location = new System.Drawing.Point(12, 71);
             this.tcProtea.Name = "tcProtea";
             this.tcProtea.SelectedIndex = 0;
@@ -1101,16 +1101,16 @@
             this.ColumnNetOfBranchAndPBranch.Name = "ColumnNetOfBranchAndPBranch";
             this.ColumnNetOfBranchAndPBranch.Width = 49;
             // 
-            // tabPageTrancactionTotalByPUser
+            // tabPageTransactionTotalByPUser
             // 
-            this.tabPageTrancactionTotalByPUser.Controls.Add(this.groupBox5);
-            this.tabPageTrancactionTotalByPUser.Controls.Add(this.dataGridViewTransactionByPUser);
-            this.tabPageTrancactionTotalByPUser.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTrancactionTotalByPUser.Name = "tabPageTrancactionTotalByPUser";
-            this.tabPageTrancactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
-            this.tabPageTrancactionTotalByPUser.TabIndex = 4;
-            this.tabPageTrancactionTotalByPUser.Text = "Transaction Total By #User";
-            this.tabPageTrancactionTotalByPUser.UseVisualStyleBackColor = true;
+            this.tabPageTransactionTotalByPUser.Controls.Add(this.groupBox5);
+            this.tabPageTransactionTotalByPUser.Controls.Add(this.dataGridViewTransactionByPUser);
+            this.tabPageTransactionTotalByPUser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTransactionTotalByPUser.Name = "tabPageTransactionTotalByPUser";
+            this.tabPageTransactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
+            this.tabPageTransactionTotalByPUser.TabIndex = 4;
+            this.tabPageTransactionTotalByPUser.Text = "Transaction Total By #User";
+            this.tabPageTransactionTotalByPUser.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -1338,7 +1338,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPBranch)).EndInit();
-            this.tabPageTrancactionTotalByPUser.ResumeLayout(false);
+            this.tabPageTransactionTotalByPUser.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).EndInit();
@@ -1425,7 +1425,7 @@
         private System.Windows.Forms.ComboBox comboBoxTransactionTotalByPBranchFilter;
         private System.Windows.Forms.ComboBox comboBoxPUsersForCashbookEntryCapture;
         private System.Windows.Forms.Label labelPUser;
-        private System.Windows.Forms.TabPage tabPageTrancactionTotalByPUser;
+        private System.Windows.Forms.TabPage tabPageTransactionTotalByPUser;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

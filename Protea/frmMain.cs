@@ -48,19 +48,33 @@ namespace Protea
         {
             if (!cbUser.UserGroup.GroupsAccessDict["Branch Cashbook and Drop Figures Display"].HasAccess)
             {
-                tcProtea.TabPages.Remove(tcProtea.TabPages["tpBranchCashbookAndDropFigures"]);
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tpBranchCashbookAndDropFigures.Name]);//"tpBranchCashbookAndDropFigures"]);
 
             }
             if (!cbUser.UserGroup.GroupsAccessDict["Cashbook"].HasAccess)
             {
-                tcProtea.TabPages.Remove(tcProtea.TabPages["tpCashbook"]);
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tpCashbook.Name]);//"tpCashbook"]);
 
             }
             if (!cbUser.UserGroup.GroupsAccessDict["Recon"].HasAccess)
             {
-                tcProtea.TabPages.Remove(tcProtea.TabPages["tpRecon"]);
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tpRecon.Name]);//"tpRecon"]);
 
             }
+            //View Totals By PUser
+            if (!cbUser.UserGroup.GroupsAccessDict["View Totals By PUser"].HasAccess)
+            {
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tabPageTransactionTotalByPUser.Name]);//"tabPageTransactionTotalByPUser"]);
+
+            }
+            //View Totals By PBranch
+            if (!cbUser.UserGroup.GroupsAccessDict["View Totals By PBranch"].HasAccess)
+            {
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tabPageTransactionTotalByPBranch.Name]);//"tabPageTransactionTotalByPUser"]);
+
+            }
+
+
             if (!cbUser.UserGroup.GroupsAccessDict["Edit Users Branches Transactions Groups"].HasAccess)
             {
                 gbEditEntities.Visible = false;
@@ -647,12 +661,12 @@ namespace Protea
             decimal d;
             if ((comboBoxPUsersForCashbookEntryCapture.SelectedIndex == -1) && ((TransType)cboxTransType.SelectedItem).NeedsPUser)
             {
-                result += "\nA Valid PUser needs to be selected";
+                result += "\nA Valid #User needs to be selected";
             }
 
             if ((comboBoxPBranchForCashbookEntryCapture.SelectedIndex == -1) && ((TransType)cboxTransType.SelectedItem).NeedsPBranch)
             {
-                result += "\nA Valid PBranch needs to be selected";
+                result += "\nA Valid #Branch needs to be selected";
             }
 
             if (!decimal.TryParse(txtCBAmount.Text, out d) && (txtCBAmount.Text != ""))
@@ -811,12 +825,12 @@ namespace Protea
 
         private void cboxPBranch_Validating(object sender, CancelEventArgs e)
         {
-            if (comboBoxPBranchForCashbookEntryCapture.SelectedItem == null)
-            {
+            //if (comboBoxPBranchForCashbookEntryCapture.SelectedItem == null)
+            //{
                 
-                comboBoxPBranchForCashbookEntryCapture.SelectedIndex = 0;
+            //    comboBoxPBranchForCashbookEntryCapture.SelectedIndex = 0;
                 
-            }
+            //}
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -836,10 +850,10 @@ namespace Protea
 
         private void comboBoxPUsersForCashbookEntryCapture_Validating(object sender, CancelEventArgs e)
         {
-            if (comboBoxPUsersForCashbookEntryCapture.SelectedItem == null)
-            {
-                comboBoxPUsersForCashbookEntryCapture.SelectedIndex = 0;
-            }
+            //if (comboBoxPUsersForCashbookEntryCapture.SelectedItem == null)
+            //{
+            //    comboBoxPUsersForCashbookEntryCapture.SelectedIndex = 0;
+            //}
         }
 
         private void comboBoxTransactionTotalByPBranchFilter_Validating(object sender, CancelEventArgs e)

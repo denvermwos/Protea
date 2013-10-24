@@ -29,10 +29,14 @@ namespace Protea
             {
                 MessageBox.Show("Password cannot be blank");
             }
+            else if (txtPassword.Text != txtConfirmPassword.Text)
+            {
+                MessageBox.Show("Password and confirmed password do not match");
+            }
             else if (txtPassword.Text == txtConfirmPassword.Text)
             {
                 ChangePwdUser.ChangePassword(txtPassword.Text);
-               //MessageBox.Show("Password has been changed.");
+                //MessageBox.Show("Password has been changed.");
                 this.DialogResult = DialogResult.OK;
 
             }
