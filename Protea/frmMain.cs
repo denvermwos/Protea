@@ -884,6 +884,21 @@ namespace Protea
                 (this).SelectNextControl((Control)sender, true, true, true, false);
             }
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageRaceCards_Click(object sender, EventArgs e)
+        {
+
+        }
         
 
 

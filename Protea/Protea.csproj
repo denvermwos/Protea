@@ -86,6 +86,7 @@
     <Compile Include="Branch.cs" />
     <Compile Include="CashbookEntry.cs" />
     <Compile Include="cboxDCItem.cs" />
+    <Compile Include="Publication.cs" />
     <Compile Include="PUserAudit.cs" />
     <Compile Include="ExceptionEntry.cs" />
     <Compile Include="ExceptionLogger.cs" />
