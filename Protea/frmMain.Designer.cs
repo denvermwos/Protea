@@ -166,6 +166,10 @@
             this.labelCashbookBalance = new System.Windows.Forms.Label();
             this.textBoxCashbookBalance = new System.Windows.Forms.TextBox();
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
+            this.ColumnSalesHistoryDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryPublicationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -1449,9 +1453,20 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSalesHistoryDeliveryDate,
+            this.ColumnSalesHistoryPublicationName,
+            this.ColumnSalesHistoryQuantity,
+            this.ColumnSalesHistoryTotalPrice});
             this.dataGridView2.Location = new System.Drawing.Point(358, 44);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.Size = new System.Drawing.Size(282, 300);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -1562,6 +1577,30 @@
             this.timer30sec.Enabled = true;
             this.timer30sec.Interval = 30000;
             this.timer30sec.Tick += new System.EventHandler(this.timer30sec_Tick);
+            // 
+            // ColumnSalesHistoryDeliveryDate
+            // 
+            this.ColumnSalesHistoryDeliveryDate.HeaderText = "Delivered";
+            this.ColumnSalesHistoryDeliveryDate.Name = "ColumnSalesHistoryDeliveryDate";
+            this.ColumnSalesHistoryDeliveryDate.Width = 77;
+            // 
+            // ColumnSalesHistoryPublicationName
+            // 
+            this.ColumnSalesHistoryPublicationName.HeaderText = "Publication";
+            this.ColumnSalesHistoryPublicationName.Name = "ColumnSalesHistoryPublicationName";
+            this.ColumnSalesHistoryPublicationName.Width = 84;
+            // 
+            // ColumnSalesHistoryQuantity
+            // 
+            this.ColumnSalesHistoryQuantity.HeaderText = "Qty";
+            this.ColumnSalesHistoryQuantity.Name = "ColumnSalesHistoryQuantity";
+            this.ColumnSalesHistoryQuantity.Width = 48;
+            // 
+            // ColumnSalesHistoryTotalPrice
+            // 
+            this.ColumnSalesHistoryTotalPrice.HeaderText = "Total";
+            this.ColumnSalesHistoryTotalPrice.Name = "ColumnSalesHistoryTotalPrice";
+            this.ColumnSalesHistoryTotalPrice.Width = 56;
             // 
             // frmMain
             // 
@@ -1744,6 +1783,10 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxTotalPriceOfPublicationSale;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryDeliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryPublicationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryTotalPrice;
     }
 }
 

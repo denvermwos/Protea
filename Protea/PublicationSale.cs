@@ -18,9 +18,9 @@ namespace Protea
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
         
-        public bool Sell()
+        public string Sell()
         {
-            bool result = false;
+            string result = "";
 
             
             SqlConnection SellPublicationConn = ConnFactory.GetConnection();
@@ -45,6 +45,7 @@ namespace Protea
             uspSellPublicationCommand.Parameters.AddWithValue("@UserID", User.UserID);
 
             SqlParameter returnValue = new SqlParameter();
+            returnValue.Direction = ParameterDirection.ReturnValue;
             uspSellPublicationCommand.Parameters.Add(returnValue);
             
             try
@@ -70,11 +71,15 @@ namespace Protea
                 int errorCode = (int)returnValue.Value;
                 if (errorCode != 0 )
                 {
-                    result = false;
+                    result = "";
+                }
+                else if (errorCode == 1)
+                {
+                    result = "Selected delivery has already been returned";
                 }
                 else
                 {
-                    result = true;
+                    result = "An unknown error has occurred";
                 }
             }
             catch
