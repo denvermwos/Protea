@@ -49,10 +49,7 @@ namespace Protea
                 while (myReader.Read())
                 {
 
-                    int publicationID = Convert.ToInt32(myReader["PublicationID"]);
-                    string publicationName = myReader["PublicationName"].ToString();
-                    decimal publicationPrice = Convert.ToDecimal(myReader["PublicationPrice"]);
-                    Publication tempPublication = new Publication(publicationID, publicationName, publicationPrice);
+                    Publication tempPublication = new Publication(Convert.ToInt32(myReader["PublicationID"]), myReader["PublicationName"].ToString(), Convert.ToDecimal(myReader["PublicationPrice"]));
                     publications.Add(tempPublication);
 
                 }

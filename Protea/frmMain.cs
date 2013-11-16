@@ -102,6 +102,23 @@ namespace Protea
             PopulateUserReconDGV(dgvReconCompleted, true);
             PopulateUserReconDGV(dgvReconPending, false);
         }
+        private void PopulatePublicationSalesDGV()
+        {
+            dataGridViewPublicationSalesHistory.Rows.Clear();
+            List<PublicationSale> publicationSalesList = PublicationSale.GetPublicationSales(dateTimePickerPublicationSalesHistory.Value.Date, cbUser.UserBranch);
+            for (int i = 0; i < publicationSalesList.Count(); i++)
+            {
+                PublicationSale tempPublicationSale = publicationSalesList.ToList()[i];
+                DataGridViewRow publicationSaleRow = new DataGridViewRow();
+                publicationSaleRow.CreateCells(dataGridViewPublicationSalesHistory);
+
+                publicationSaleRow.Cells[ColumnSalesHistoryDeliveryDate.Index].Value = tempPublicationSale.PublicationDeliveryDate.ToString("dd MMM");
+                publicationSaleRow.Cells[ColumnSalesHistoryPublicationName.Index].Value = tempPublicationSale.Publication.PublicationName;
+                publicationSaleRow.Cells[ColumnSalesHistoryQuantity.Index].Value = tempPublicationSale.Quantity.ToString();
+                publicationSaleRow.Cells[ColumnSalesHistoryTotalPrice.Index].Value = tempPublicationSale.TotalPrice.ToString();
+                dataGridViewPublicationSalesHistory.Rows.Add(publicationSaleRow);
+            }
+        }
         private void PopulateUserReconDGV(DataGridView dgv, bool viewFinalTransfers)
         {
 
@@ -155,7 +172,7 @@ namespace Protea
             cboxTransTypeFilter.SelectedIndex = 0;
 
             PopulateDorCCombobox();
-
+            PopulatePublicationSalesDGV();
 
             LoadBranchSpecificDataToControls();
         }
@@ -917,6 +934,11 @@ namespace Protea
         private void tabPageRaceCards_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePickerPublicationSalesHistory_ValueChanged(object sender, EventArgs e)
+        {
+            PopulatePublicationSalesDGV();
         }
         
 

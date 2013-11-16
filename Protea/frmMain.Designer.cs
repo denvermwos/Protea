@@ -154,7 +154,7 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.numericUpDownItemsInSale = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPublicationSalesHistory = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBoxPublications = new System.Windows.Forms.ComboBox();
             this.buttonPurchasePublications = new System.Windows.Forms.Button();
@@ -170,6 +170,7 @@
             this.ColumnSalesHistoryPublicationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesHistoryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesHistoryTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePickerPublicationSalesHistory = new System.Windows.Forms.DateTimePicker();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -196,7 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxPublicationSale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemsInSale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPublicationSalesHistory)).BeginInit();
             this.gbEditEntities.SuspendLayout();
             this.gbBranch.SuspendLayout();
             this.SuspendLayout();
@@ -1338,6 +1339,7 @@
             // 
             // groupBoxPublicationSale
             // 
+            this.groupBoxPublicationSale.Controls.Add(this.dateTimePickerPublicationSalesHistory);
             this.groupBoxPublicationSale.Controls.Add(this.textBoxTotalPriceOfPublicationSale);
             this.groupBoxPublicationSale.Controls.Add(this.label17);
             this.groupBoxPublicationSale.Controls.Add(this.textBoxPublicationDescription);
@@ -1347,7 +1349,7 @@
             this.groupBoxPublicationSale.Controls.Add(this.monthCalendar1);
             this.groupBoxPublicationSale.Controls.Add(this.numericUpDownItemsInSale);
             this.groupBoxPublicationSale.Controls.Add(this.label11);
-            this.groupBoxPublicationSale.Controls.Add(this.dataGridView2);
+            this.groupBoxPublicationSale.Controls.Add(this.dataGridViewPublicationSalesHistory);
             this.groupBoxPublicationSale.Controls.Add(this.label10);
             this.groupBoxPublicationSale.Controls.Add(this.comboBoxPublications);
             this.groupBoxPublicationSale.Controls.Add(this.buttonPurchasePublications);
@@ -1444,32 +1446,32 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(355, 28);
+            this.label11.Location = new System.Drawing.Point(355, 54);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Sales History";
+            this.label11.Text = "Sales History for :";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // dataGridView2
+            // dataGridViewPublicationSalesHistory
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPublicationSalesHistory.AllowUserToAddRows = false;
+            this.dataGridViewPublicationSalesHistory.AllowUserToDeleteRows = false;
+            this.dataGridViewPublicationSalesHistory.AllowUserToResizeColumns = false;
+            this.dataGridViewPublicationSalesHistory.AllowUserToResizeRows = false;
+            this.dataGridViewPublicationSalesHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridViewPublicationSalesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPublicationSalesHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSalesHistoryDeliveryDate,
             this.ColumnSalesHistoryPublicationName,
             this.ColumnSalesHistoryQuantity,
             this.ColumnSalesHistoryTotalPrice});
-            this.dataGridView2.Location = new System.Drawing.Point(358, 44);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(282, 300);
-            this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridViewPublicationSalesHistory.Location = new System.Drawing.Point(358, 82);
+            this.dataGridViewPublicationSalesHistory.Name = "dataGridViewPublicationSalesHistory";
+            this.dataGridViewPublicationSalesHistory.RowHeadersVisible = false;
+            this.dataGridViewPublicationSalesHistory.Size = new System.Drawing.Size(282, 262);
+            this.dataGridViewPublicationSalesHistory.TabIndex = 4;
+            this.dataGridViewPublicationSalesHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // label10
             // 
@@ -1602,6 +1604,14 @@
             this.ColumnSalesHistoryTotalPrice.Name = "ColumnSalesHistoryTotalPrice";
             this.ColumnSalesHistoryTotalPrice.Width = 56;
             // 
+            // dateTimePickerPublicationSalesHistory
+            // 
+            this.dateTimePickerPublicationSalesHistory.Location = new System.Drawing.Point(450, 52);
+            this.dateTimePickerPublicationSalesHistory.Name = "dateTimePickerPublicationSalesHistory";
+            this.dateTimePickerPublicationSalesHistory.Size = new System.Drawing.Size(190, 20);
+            this.dateTimePickerPublicationSalesHistory.TabIndex = 15;
+            this.dateTimePickerPublicationSalesHistory.ValueChanged += new System.EventHandler(this.dateTimePickerPublicationSalesHistory_ValueChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1650,7 +1660,7 @@
             this.groupBoxPublicationSale.ResumeLayout(false);
             this.groupBoxPublicationSale.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemsInSale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPublicationSalesHistory)).EndInit();
             this.gbEditEntities.ResumeLayout(false);
             this.gbBranch.ResumeLayout(false);
             this.gbBranch.PerformLayout();
@@ -1765,7 +1775,7 @@
         private System.Windows.Forms.GroupBox groupBoxPublicationSale;
         private System.Windows.Forms.Button buttonPurchasePublications;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewPublicationSalesHistory;
         private System.Windows.Forms.ComboBox comboBoxPublications;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown numericUpDownItemsInSale;
@@ -1787,6 +1797,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryPublicationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryTotalPrice;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPublicationSalesHistory;
     }
 }
 
