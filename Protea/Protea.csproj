@@ -87,6 +87,7 @@
     <Compile Include="CashbookEntry.cs" />
     <Compile Include="cboxDCItem.cs" />
     <Compile Include="Publication.cs" />
+    <Compile Include="PublicationSale.cs" />
     <Compile Include="PUserAudit.cs" />
     <Compile Include="ExceptionEntry.cs" />
     <Compile Include="ExceptionLogger.cs" />

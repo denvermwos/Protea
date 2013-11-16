@@ -142,7 +142,7 @@ namespace Protea
         private void LoadDataToControls()
         {
             FormHeaderText();
-            
+            PopulatePublicationsCombobox();
             dataGridViewTransactionByPBranch.Rows.Clear();
             cboxTransTypeDoneLoading = false;
             PopulateTransactionsCombobox(cboxTransType, false);
@@ -235,6 +235,25 @@ namespace Protea
             UpdateCashbookBalanceAndDropSafe();
         }
 
+        private void PopulatePublicationsCombobox()
+        {
+            comboBoxPublications.Items.Clear();
+
+
+            List<Publication> publicationList = Publication.GetPublications();
+
+
+            for (int i = 0; i < publicationList.Count(); i++)
+            {
+                Publication item = publicationList[i];
+                comboBoxPublications.Items.Add(item);
+            }
+
+            if (comboBoxPublications.Items.Count != 0)
+            {
+                comboBoxPublications.SelectedIndex = 0;
+            }
+        }
         private void PopulateTransactionsCombobox(ComboBox cb, bool addAllTransactions)
         {
             

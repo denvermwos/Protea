@@ -18,6 +18,10 @@ namespace Protea
             PublicationName = publicationName;
             PublicationPrice = publicationPrice;
         }
+        public override string ToString()
+        {
+            return PublicationName;
+        }
         public static List<Publication> GetPublications()
         {
             List<Publication> publications =  new List<Publication>();
@@ -34,7 +38,7 @@ namespace Protea
 
 
 
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Publicatons", GetPublicationsConn);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Publications", GetPublicationsConn);
 
 
             try
