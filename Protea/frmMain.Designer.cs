@@ -137,24 +137,25 @@
             this.ColumnPUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPUserTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageRaceCards = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonDeliveries = new System.Windows.Forms.Button();
             this.groupBoxPublicationSale = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ColumnPublicationSaleDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePickerPublicationSalesHistory = new System.Windows.Forms.DateTimePicker();
             this.textBoxTotalPriceOfPublicationSale = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxPublicationDescription = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.numericUpDownItemsInSale = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridViewPublicationSalesHistory = new System.Windows.Forms.DataGridView();
+            this.ColumnSalesHistoryDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryPublicationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesHistoryTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBoxPublications = new System.Windows.Forms.ComboBox();
             this.buttonPurchasePublications = new System.Windows.Forms.Button();
@@ -166,11 +167,6 @@
             this.labelCashbookBalance = new System.Windows.Forms.Label();
             this.textBoxCashbookBalance = new System.Windows.Forms.TextBox();
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
-            this.ColumnSalesHistoryDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesHistoryPublicationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesHistoryQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesHistoryTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePickerPublicationSalesHistory = new System.Windows.Forms.DateTimePicker();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -192,10 +188,8 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).BeginInit();
             this.tabPageRaceCards.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxPublicationSale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemsInSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPublicationSalesHistory)).BeginInit();
             this.gbEditEntities.SuspendLayout();
@@ -1259,8 +1253,7 @@
             // 
             // tabPageRaceCards
             // 
-            this.tabPageRaceCards.Controls.Add(this.button1);
-            this.tabPageRaceCards.Controls.Add(this.groupBox7);
+            this.tabPageRaceCards.Controls.Add(this.buttonDeliveries);
             this.tabPageRaceCards.Controls.Add(this.groupBoxPublicationSale);
             this.tabPageRaceCards.Location = new System.Drawing.Point(4, 22);
             this.tabPageRaceCards.Name = "tabPageRaceCards";
@@ -1271,74 +1264,20 @@
             this.tabPageRaceCards.UseVisualStyleBackColor = true;
             this.tabPageRaceCards.Click += new System.EventHandler(this.tabPageRaceCards_Click);
             // 
-            // button1
+            // buttonDeliveries
             // 
-            this.button1.Location = new System.Drawing.Point(665, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "View Old Delvieries";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button2);
-            this.groupBox7.Controls.Add(this.label16);
-            this.groupBox7.Controls.Add(this.dataGridView3);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Controls.Add(this.dataGridView1);
-            this.groupBox7.Location = new System.Drawing.Point(666, 35);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(284, 321);
-            this.groupBox7.TabIndex = 1;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sales Audit";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(208, 39);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Display";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(7, 23);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Delivery Dates";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(10, 134);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(268, 181);
-            this.dataGridView3.TabIndex = 4;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 118);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(164, 13);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Sales Of Selected Delivery Dates";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(192, 76);
-            this.dataGridView1.TabIndex = 2;
+            this.buttonDeliveries.Location = new System.Drawing.Point(666, 7);
+            this.buttonDeliveries.Name = "buttonDeliveries";
+            this.buttonDeliveries.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeliveries.TabIndex = 2;
+            this.buttonDeliveries.Text = "Deliveries";
+            this.buttonDeliveries.UseVisualStyleBackColor = true;
+            this.buttonDeliveries.Click += new System.EventHandler(this.buttonDeliveries_Click);
             // 
             // groupBoxPublicationSale
             // 
+            this.groupBoxPublicationSale.Controls.Add(this.textBox1);
+            this.groupBoxPublicationSale.Controls.Add(this.dataGridView2);
             this.groupBoxPublicationSale.Controls.Add(this.dateTimePickerPublicationSalesHistory);
             this.groupBoxPublicationSale.Controls.Add(this.textBoxTotalPriceOfPublicationSale);
             this.groupBoxPublicationSale.Controls.Add(this.label17);
@@ -1346,7 +1285,6 @@
             this.groupBoxPublicationSale.Controls.Add(this.label14);
             this.groupBoxPublicationSale.Controls.Add(this.label13);
             this.groupBoxPublicationSale.Controls.Add(this.label12);
-            this.groupBoxPublicationSale.Controls.Add(this.monthCalendar1);
             this.groupBoxPublicationSale.Controls.Add(this.numericUpDownItemsInSale);
             this.groupBoxPublicationSale.Controls.Add(this.label11);
             this.groupBoxPublicationSale.Controls.Add(this.dataGridViewPublicationSalesHistory);
@@ -1354,12 +1292,51 @@
             this.groupBoxPublicationSale.Controls.Add(this.comboBoxPublications);
             this.groupBoxPublicationSale.Controls.Add(this.buttonPurchasePublications);
             this.groupBoxPublicationSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxPublicationSale.Location = new System.Drawing.Point(8, 6);
+            this.groupBoxPublicationSale.Location = new System.Drawing.Point(8, 7);
             this.groupBoxPublicationSale.Name = "groupBoxPublicationSale";
-            this.groupBoxPublicationSale.Size = new System.Drawing.Size(651, 350);
+            this.groupBoxPublicationSale.Size = new System.Drawing.Size(651, 349);
             this.groupBoxPublicationSale.TabIndex = 0;
             this.groupBoxPublicationSale.TabStop = false;
             this.groupBoxPublicationSale.Text = "Publication Sale";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox1.Location = new System.Drawing.Point(135, 44);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(217, 169);
+            this.textBox1.TabIndex = 17;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.ColumnHeadersVisible = false;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnPublicationSaleDeliveryDate});
+            this.dataGridView2.Location = new System.Drawing.Point(10, 44);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(119, 169);
+            this.dataGridView2.TabIndex = 16;
+            // 
+            // ColumnPublicationSaleDeliveryDate
+            // 
+            this.ColumnPublicationSaleDeliveryDate.HeaderText = "Delivery Date";
+            this.ColumnPublicationSaleDeliveryDate.Name = "ColumnPublicationSaleDeliveryDate";
+            // 
+            // dateTimePickerPublicationSalesHistory
+            // 
+            this.dateTimePickerPublicationSalesHistory.Location = new System.Drawing.Point(450, 52);
+            this.dateTimePickerPublicationSalesHistory.Name = "dateTimePickerPublicationSalesHistory";
+            this.dateTimePickerPublicationSalesHistory.Size = new System.Drawing.Size(190, 20);
+            this.dateTimePickerPublicationSalesHistory.TabIndex = 15;
+            this.dateTimePickerPublicationSalesHistory.ValueChanged += new System.EventHandler(this.dateTimePickerPublicationSalesHistory_ValueChanged);
             // 
             // textBoxTotalPriceOfPublicationSale
             // 
@@ -1412,13 +1389,6 @@
             this.label12.Size = new System.Drawing.Size(141, 13);
             this.label12.TabIndex = 9;
             this.label12.Text = "Select Delivery Date of Card";
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Sunday;
-            this.monthCalendar1.Location = new System.Drawing.Point(9, 54);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 8;
             // 
             // numericUpDownItemsInSale
             // 
@@ -1473,6 +1443,30 @@
             this.dataGridViewPublicationSalesHistory.TabIndex = 4;
             this.dataGridViewPublicationSalesHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+            // ColumnSalesHistoryDeliveryDate
+            // 
+            this.ColumnSalesHistoryDeliveryDate.HeaderText = "Delivered";
+            this.ColumnSalesHistoryDeliveryDate.Name = "ColumnSalesHistoryDeliveryDate";
+            this.ColumnSalesHistoryDeliveryDate.Width = 77;
+            // 
+            // ColumnSalesHistoryPublicationName
+            // 
+            this.ColumnSalesHistoryPublicationName.HeaderText = "Publication";
+            this.ColumnSalesHistoryPublicationName.Name = "ColumnSalesHistoryPublicationName";
+            this.ColumnSalesHistoryPublicationName.Width = 84;
+            // 
+            // ColumnSalesHistoryQuantity
+            // 
+            this.ColumnSalesHistoryQuantity.HeaderText = "Qty";
+            this.ColumnSalesHistoryQuantity.Name = "ColumnSalesHistoryQuantity";
+            this.ColumnSalesHistoryQuantity.Width = 48;
+            // 
+            // ColumnSalesHistoryTotalPrice
+            // 
+            this.ColumnSalesHistoryTotalPrice.HeaderText = "Total";
+            this.ColumnSalesHistoryTotalPrice.Name = "ColumnSalesHistoryTotalPrice";
+            this.ColumnSalesHistoryTotalPrice.Width = 56;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1499,6 +1493,7 @@
             this.buttonPurchasePublications.TabIndex = 2;
             this.buttonPurchasePublications.Text = "Purchase";
             this.buttonPurchasePublications.UseVisualStyleBackColor = true;
+            this.buttonPurchasePublications.Click += new System.EventHandler(this.buttonPurchasePublications_Click);
             // 
             // btnGroups
             // 
@@ -1580,38 +1575,6 @@
             this.timer30sec.Interval = 30000;
             this.timer30sec.Tick += new System.EventHandler(this.timer30sec_Tick);
             // 
-            // ColumnSalesHistoryDeliveryDate
-            // 
-            this.ColumnSalesHistoryDeliveryDate.HeaderText = "Delivered";
-            this.ColumnSalesHistoryDeliveryDate.Name = "ColumnSalesHistoryDeliveryDate";
-            this.ColumnSalesHistoryDeliveryDate.Width = 77;
-            // 
-            // ColumnSalesHistoryPublicationName
-            // 
-            this.ColumnSalesHistoryPublicationName.HeaderText = "Publication";
-            this.ColumnSalesHistoryPublicationName.Name = "ColumnSalesHistoryPublicationName";
-            this.ColumnSalesHistoryPublicationName.Width = 84;
-            // 
-            // ColumnSalesHistoryQuantity
-            // 
-            this.ColumnSalesHistoryQuantity.HeaderText = "Qty";
-            this.ColumnSalesHistoryQuantity.Name = "ColumnSalesHistoryQuantity";
-            this.ColumnSalesHistoryQuantity.Width = 48;
-            // 
-            // ColumnSalesHistoryTotalPrice
-            // 
-            this.ColumnSalesHistoryTotalPrice.HeaderText = "Total";
-            this.ColumnSalesHistoryTotalPrice.Name = "ColumnSalesHistoryTotalPrice";
-            this.ColumnSalesHistoryTotalPrice.Width = 56;
-            // 
-            // dateTimePickerPublicationSalesHistory
-            // 
-            this.dateTimePickerPublicationSalesHistory.Location = new System.Drawing.Point(450, 52);
-            this.dateTimePickerPublicationSalesHistory.Name = "dateTimePickerPublicationSalesHistory";
-            this.dateTimePickerPublicationSalesHistory.Size = new System.Drawing.Size(190, 20);
-            this.dateTimePickerPublicationSalesHistory.TabIndex = 15;
-            this.dateTimePickerPublicationSalesHistory.ValueChanged += new System.EventHandler(this.dateTimePickerPublicationSalesHistory_ValueChanged);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1653,12 +1616,9 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactionByPUser)).EndInit();
             this.tabPageRaceCards.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxPublicationSale.ResumeLayout(false);
             this.groupBoxPublicationSale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemsInSale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPublicationSalesHistory)).EndInit();
             this.gbEditEntities.ResumeLayout(false);
@@ -1783,14 +1743,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxTotalPriceOfPublicationSale;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryDeliveryDate;
@@ -1798,6 +1750,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesHistoryTotalPrice;
         private System.Windows.Forms.DateTimePicker dateTimePickerPublicationSalesHistory;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPublicationSaleDeliveryDate;
+        private System.Windows.Forms.Button buttonDeliveries;
     }
 }
 

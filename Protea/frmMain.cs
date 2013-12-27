@@ -717,6 +717,18 @@ namespace Protea
 
             return result;
         }
+        private string ValidatePublicationSaleFields()
+        {
+            string result = "";
+
+            if (comboBoxPublications.SelectedItem == null)
+            {
+                result = "Please select a valid publication";
+            }
+
+
+            return result;
+        }
 
         private void cboxBranch_Leave(object sender, EventArgs e)
         {
@@ -869,10 +881,7 @@ namespace Protea
             //}
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void buttonDoPUserAudit_Click(object sender, EventArgs e)
         {
@@ -939,6 +948,34 @@ namespace Protea
         private void dateTimePickerPublicationSalesHistory_ValueChanged(object sender, EventArgs e)
         {
             PopulatePublicationSalesDGV();
+        }
+
+        private void buttonPurchasePublications_Click(object sender, EventArgs e)
+        {
+            string err = ValidatePublicationSaleFields();
+            if (err == "")
+            {
+                try
+                {
+                    //todo code for purchase
+                    //PublicationSale publicationSale = new PublicationSale(DateTime.Now.Date,monthCalendarDeliveryDate
+                }
+                catch (Exception ex)
+                {
+
+                    ExceptionLogger.LogMessage(ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show(err);
+            }
+        }
+
+        private void buttonDeliveries_Click(object sender, EventArgs e)
+        {
+            frmDeliveries frmDeliveries = new frmDeliveries();
+            frmDeliveries.Show();
         }
         
 

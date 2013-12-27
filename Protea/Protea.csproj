@@ -86,6 +86,19 @@
     <Compile Include="Branch.cs" />
     <Compile Include="CashbookEntry.cs" />
     <Compile Include="cboxDCItem.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="frmDeliveries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeliveries.Designer.cs">
+      <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelivery.Designer.cs">
+      <DependentUpon>frmDelivery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Publication.cs" />
     <Compile Include="PublicationSale.cs" />
     <Compile Include="PUserAudit.cs" />
@@ -182,6 +195,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDeliveries.resx">
+      <DependentUpon>frmDeliveries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBranch.resx">
       <DependentUpon>frmBranch.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangePwd.resx">
       <DependentUpon>frmChangePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelivery.resx">
+      <DependentUpon>frmDelivery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGroup.resx">
       <DependentUpon>frmGroup.cs</DependentUpon>

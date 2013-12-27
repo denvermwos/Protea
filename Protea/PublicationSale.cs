@@ -83,7 +83,7 @@ namespace Protea
             try
             {
                 int errorCode = (int)returnValue.Value;
-                if (errorCode != 0 )
+                if (errorCode == 0 )
                 {
                     result = "";
                 }
@@ -91,9 +91,9 @@ namespace Protea
                 {
                     result = "Selected delivery has already been returned";
                 }
-                else
+                else if (errorCode == 2)
                 {
-                    result = "An unknown error has occurred";
+                    result = "Delivery does not exist";
                 }
             }
             catch
