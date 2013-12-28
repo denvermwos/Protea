@@ -17,7 +17,7 @@ namespace Protea
         public int UserID;
         public bool IsAdmin;
         public bool cboxTransTypeDoneLoading = false;
-        public User cbUser;
+        public static User cbUser;
         public bool CurrentCBLocked = true;
         //private Dictionary<string, int> branchesDict = new Dictionary<string, int>();
         private bool cboxBranchesDoneLoading = false;

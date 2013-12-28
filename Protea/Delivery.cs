@@ -133,7 +133,7 @@ namespace Protea
             return returnedDeliveries;
         }
 
-        public static List<Delivery> GetUnreturnedDeliveries()
+        public static List<Delivery> GetUnreturnedDeliveries(Branch Branch)
         {
             List<Delivery> unreturnedDeliveries = new List<Delivery>();
 
@@ -150,9 +150,9 @@ namespace Protea
 
             SqlCommand uspGetUnreturnedDeliveriesCommand = new SqlCommand("uspGetUnreturnedDeliveries", GetUnreturnedDeliveriesConn);
             uspGetUnreturnedDeliveriesCommand.CommandType = CommandType.StoredProcedure;
-            
 
 
+            uspGetUnreturnedDeliveriesCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
             //SqlParameter returnValue = new SqlParameter();
             //returnValue.Direction = ParameterDirection.ReturnValue;
             //uspGetUnreturnedDeliveriesCommand.Parameters.Add(returnValue);

@@ -28,36 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReturnedDeliveries = new System.Windows.Forms.DataGridView();
+            this.ColumnReturnedDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnedDeliveryBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeReturnedDeliveryStartDate = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
-            this.ColumnReturnedDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnReturnedDeliveryBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUnreturnedDeliveries = new System.Windows.Forms.DataGridView();
             this.ColumnUnreturnedDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnreturnedDeliveryBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDeliveries)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnreturnedDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewReturnedDeliveries
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewReturnedDeliveries.AllowUserToAddRows = false;
+            this.dataGridViewReturnedDeliveries.AllowUserToDeleteRows = false;
+            this.dataGridViewReturnedDeliveries.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewReturnedDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReturnedDeliveries.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnReturnedDeliveryDate,
             this.ColumnReturnedDeliveryBranch});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 33);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(319, 347);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewReturnedDeliveries.Location = new System.Drawing.Point(12, 33);
+            this.dataGridViewReturnedDeliveries.Name = "dataGridViewReturnedDeliveries";
+            this.dataGridViewReturnedDeliveries.ReadOnly = true;
+            this.dataGridViewReturnedDeliveries.RowHeadersVisible = false;
+            this.dataGridViewReturnedDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewReturnedDeliveries.Size = new System.Drawing.Size(319, 347);
+            this.dataGridViewReturnedDeliveries.TabIndex = 0;
+            this.dataGridViewReturnedDeliveries.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReturnedDeliveries_CellDoubleClick);
+            // 
+            // ColumnReturnedDeliveryDate
+            // 
+            this.ColumnReturnedDeliveryDate.HeaderText = "Delivery Date";
+            this.ColumnReturnedDeliveryDate.Name = "ColumnReturnedDeliveryDate";
+            this.ColumnReturnedDeliveryDate.ReadOnly = true;
+            this.ColumnReturnedDeliveryDate.Width = 96;
+            // 
+            // ColumnReturnedDeliveryBranch
+            // 
+            this.ColumnReturnedDeliveryBranch.HeaderText = "Branch";
+            this.ColumnReturnedDeliveryBranch.Name = "ColumnReturnedDeliveryBranch";
+            this.ColumnReturnedDeliveryBranch.ReadOnly = true;
+            this.ColumnReturnedDeliveryBranch.Width = 66;
             // 
             // button1
             // 
@@ -86,12 +102,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "All Unreturned Deliveries";
             // 
-            // dateTimePicker1
+            // dateTimeReturnedDeliveryStartDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(153, 11);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(178, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimeReturnedDeliveryStartDate.Location = new System.Drawing.Point(153, 11);
+            this.dateTimeReturnedDeliveryStartDate.Name = "dateTimeReturnedDeliveryStartDate";
+            this.dateTimeReturnedDeliveryStartDate.Size = new System.Drawing.Size(178, 20);
+            this.dateTimeReturnedDeliveryStartDate.TabIndex = 5;
             // 
             // button2
             // 
@@ -102,35 +118,23 @@
             this.button2.Text = "Add New Delivery";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // ColumnReturnedDeliveryDate
+            // dataGridViewUnreturnedDeliveries
             // 
-            this.ColumnReturnedDeliveryDate.HeaderText = "Delivery Date";
-            this.ColumnReturnedDeliveryDate.Name = "ColumnReturnedDeliveryDate";
-            this.ColumnReturnedDeliveryDate.ReadOnly = true;
-            this.ColumnReturnedDeliveryDate.Width = 96;
-            // 
-            // ColumnReturnedDeliveryBranch
-            // 
-            this.ColumnReturnedDeliveryBranch.HeaderText = "Branch";
-            this.ColumnReturnedDeliveryBranch.Name = "ColumnReturnedDeliveryBranch";
-            this.ColumnReturnedDeliveryBranch.ReadOnly = true;
-            this.ColumnReturnedDeliveryBranch.Width = 66;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewUnreturnedDeliveries.AllowUserToAddRows = false;
+            this.dataGridViewUnreturnedDeliveries.AllowUserToDeleteRows = false;
+            this.dataGridViewUnreturnedDeliveries.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewUnreturnedDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnreturnedDeliveries.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnUnreturnedDeliveryDate,
             this.ColumnUnreturnedDeliveryBranch});
-            this.dataGridView2.Location = new System.Drawing.Point(430, 33);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(319, 347);
-            this.dataGridView2.TabIndex = 7;
+            this.dataGridViewUnreturnedDeliveries.Location = new System.Drawing.Point(430, 33);
+            this.dataGridViewUnreturnedDeliveries.Name = "dataGridViewUnreturnedDeliveries";
+            this.dataGridViewUnreturnedDeliveries.ReadOnly = true;
+            this.dataGridViewUnreturnedDeliveries.RowHeadersVisible = false;
+            this.dataGridViewUnreturnedDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUnreturnedDeliveries.Size = new System.Drawing.Size(319, 347);
+            this.dataGridViewUnreturnedDeliveries.TabIndex = 7;
+            this.dataGridViewUnreturnedDeliveries.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnreturnedDeliveries_CellDoubleClick);
             // 
             // ColumnUnreturnedDeliveryDate
             // 
@@ -151,17 +155,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 475);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridViewUnreturnedDeliveries);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimeReturnedDeliveryStartDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewReturnedDeliveries);
             this.Name = "frmDeliveries";
             this.Text = "Deliveries";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDeliveries)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnreturnedDeliveries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,15 +173,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewReturnedDeliveries;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeReturnedDeliveryStartDate;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnedDeliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnedDeliveryBranch;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewUnreturnedDeliveries;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnreturnedDeliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnreturnedDeliveryBranch;
     }
