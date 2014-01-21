@@ -13,7 +13,7 @@ namespace Protea
         {
             //ExceptionEntry exceptionEntry = new ExceptionEntry(DateTime.Now, ex.ToString(), frmLogin.user);
             //exceptionEntry.Save();
-            MessageBox.Show(ex.ToString());//"An error has occured and has been logged. Application must be closed");
+            MessageBox.Show(ex.ToString(),"Protea");//"An error has occured and has been logged. Application must be closed");
             Application.Exit();
         }
     }

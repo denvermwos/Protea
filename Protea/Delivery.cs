@@ -13,26 +13,32 @@ namespace Protea
         public DateTime DeliveryDate;
         public Branch Branch;
         public bool DeliveryReturned;
+        public string DeliveryDescription;
         public User UserReturnedBy;
 
         public Delivery()
         {
         }
 
-        public Delivery(DateTime deliveryDate, Branch branch, bool deliveryReturned, User userReturnedBy)
+        public Delivery(DateTime deliveryDate, Branch branch, bool deliveryReturned, string deliveryDescription, User userReturnedBy)
         {
             DeliveryDate = deliveryDate;
             Branch = branch;
             DeliveryReturned = deliveryReturned;
+            DeliveryDescription = deliveryDescription;
             UserReturnedBy = userReturnedBy;
+            
         }
-        public Delivery(int deliveryID, DateTime deliveryDate, Branch branch, bool deliveryReturned, User userReturnedBy)
+        public Delivery(int deliveryID, DateTime deliveryDate, Branch branch, bool deliveryReturned, string deliveryDescription, User userReturnedBy)
         {
             DeliveryID = deliveryID;
             DeliveryDate = deliveryDate;
             Branch = branch;
             DeliveryReturned = deliveryReturned;
+            DeliveryDescription = deliveryDescription;
             UserReturnedBy = userReturnedBy;
+
+            
         }
 
         public static List<Delivery> GetReturnedDeliveries(DateTime StartDate, Branch Branch)
@@ -80,9 +86,15 @@ namespace Protea
                     DateTime deliveryDate = Convert.ToDateTime(returnedDeliveriesReader["DeliveryDate"]);
                     Branch branch = new Branch(Convert.ToInt16(returnedDeliveriesReader["BranchID"]), returnedDeliveriesReader["BranchName"].ToString(), Convert.ToDecimal(returnedDeliveriesReader["CBBalance"]), Convert.ToDecimal(returnedDeliveriesReader["DropBalance"]));
                     bool deliveryReturned = Convert.ToBoolean(returnedDeliveriesReader["DeliveryReturned"]);
-                    User userReturnedBy = new User(Convert.ToInt16(returnedDeliveriesReader["UserID"]), returnedDeliveriesReader["FName"].ToString(), returnedDeliveriesReader["LName"].ToString());
+                    string deliveryDescription = returnedDeliveriesReader["DeliveryDescription"].ToString();
 
-                    Delivery tempDelivery = new Delivery(deliveryID,deliveryDate,branch,deliveryReturned,userReturnedBy);//(publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, quantity, totalPrice);
+                    int userid = Convert.ToInt32(returnedDeliveriesReader["RetUserID"]);
+                    string fname = returnedDeliveriesReader["RetFName"].ToString();
+                    string lname = returnedDeliveriesReader["RetLName"].ToString();
+
+                    User userReturnedBy = new User(userid, fname, lname);
+                    
+                    Delivery tempDelivery = new Delivery(deliveryID,deliveryDate,branch,deliveryReturned,deliveryDescription, userReturnedBy);//(publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, quantity, totalPrice);
 
                     returnedDeliveries.Add(tempDelivery);
 
@@ -169,10 +181,18 @@ namespace Protea
                     int deliveryID = Convert.ToInt16(unreturnedDeliveriesReader["DeliveryID"]);
                     DateTime deliveryDate = Convert.ToDateTime(unreturnedDeliveriesReader["DeliveryDate"]);
                     Branch branch = new Branch(Convert.ToInt16(unreturnedDeliveriesReader["BranchID"]), unreturnedDeliveriesReader["BranchName"].ToString(), Convert.ToDecimal(unreturnedDeliveriesReader["CBBalance"]), Convert.ToDecimal(unreturnedDeliveriesReader["DropBalance"]));
-                    bool deliveryUnreturned = Convert.ToBoolean(unreturnedDeliveriesReader["DeliveryReturned"]);
-                    User userUnreturnedBy = new User(Convert.ToInt16(unreturnedDeliveriesReader["UserID"]), unreturnedDeliveriesReader["FName"].ToString(), unreturnedDeliveriesReader["LName"].ToString());
+                    bool deliveryReturned = Convert.ToBoolean(unreturnedDeliveriesReader["DeliveryReturned"]);
+                    string deliveryDescription = unreturnedDeliveriesReader["DeliveryDescription"].ToString();
 
-                    Delivery tempDelivery = new Delivery(deliveryID, deliveryDate, branch, deliveryUnreturned, userUnreturnedBy);//(publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, quantity, totalPrice);
+
+
+                    int userid = Convert.ToInt32(unreturnedDeliveriesReader["RetUserID"]);
+                    string fname = unreturnedDeliveriesReader["RetFName"].ToString();
+                    string lname = unreturnedDeliveriesReader["RetLName"].ToString();
+                    
+                    User userReturnedBy = new User(userid,fname, lname);
+
+                    Delivery tempDelivery = new Delivery(deliveryID, deliveryDate, branch, deliveryReturned, deliveryDescription, userReturnedBy);//, userUnreturnedBy);//(publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, quantity, totalPrice);
 
                     unreturnedDeliveries.Add(tempDelivery);
 
@@ -200,13 +220,178 @@ namespace Protea
 
             return unreturnedDeliveries;
         }
-        public string Update()
+        public Boolean Save()
         {
-            return "";
+            Boolean result = false;
+            if (DeliveryID == null)
+            {
+                result = Insert();
+            }
+            else
+            {
+                result = Update();
+            }
+            return result;
         }
-        public string Insert()
+        public Boolean Update()
         {
-            return "";
+
+            Boolean result = false;
+
+            SqlConnection updateDeliveryConn = ConnFactory.GetConnection();
+
+            try
+            {
+                updateDeliveryConn.Open();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            SqlCommand updateDeliveryCommand = new SqlCommand("uspUpdateDelivery", updateDeliveryConn);
+            updateDeliveryCommand.CommandType = CommandType.StoredProcedure;
+            updateDeliveryCommand.Parameters.AddWithValue("@DeliveryID", DeliveryID);
+            updateDeliveryCommand.Parameters.AddWithValue("@DeliveryDate", DeliveryDate.Date);
+            updateDeliveryCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
+            updateDeliveryCommand.Parameters.AddWithValue("@DeliveryReturned", DeliveryReturned);
+            updateDeliveryCommand.Parameters.AddWithValue("@DeliveryDescription", DeliveryDescription);
+            updateDeliveryCommand.Parameters.AddWithValue("@CanEditReturnedDeliveries", frmMain.cbUser.UserGroup.GroupsAccessDict["Can Edit Saved Deliveries"].HasAccess);
+            updateDeliveryCommand.Parameters.AddWithValue("@UserReturnedBy", UserReturnedBy.UserID);                            
+            
+
+            //@DeliveryID int,
+            //@DeliveryDate datetime,
+            //@BranchID int,
+            //@DeliveryReturned bit,
+            //@UserReturnedBy int,
+            //@CanEditReturnedDeliveries bit
+
+
+            SqlParameter returnValue = new SqlParameter();
+            returnValue.Direction = ParameterDirection.ReturnValue;
+            updateDeliveryCommand.Parameters.Add(returnValue);
+
+            try
+            {
+                updateDeliveryCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+            try
+            {
+                updateDeliveryConn.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            try
+            {
+                int errorCode = (int)returnValue.Value;
+                if (errorCode == 0)
+                {
+                    //Successfully Updated
+                    result = true;
+                }
+                else if (errorCode == 1)
+                {
+                    //Delivery doesnt exist
+                    result = false;
+                }
+                else if (errorCode == 2)
+                {
+                    //Delivery returned and user has no permission to overwrite
+                    result = false;
+                }
+            }
+            catch
+            {
+            }
+
+
+            //result will be true only if this update procedure was successful
+            return result;
+            
+        }
+        public Boolean Insert()
+        {
+            Boolean result = false;
+
+            SqlConnection insertDeliveryConn = ConnFactory.GetConnection();
+
+            try
+            {
+                insertDeliveryConn.Open();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            SqlCommand insertDeliveryCommand = new SqlCommand("uspInsertDelivery", insertDeliveryConn);
+            insertDeliveryCommand.CommandType = CommandType.StoredProcedure;
+            insertDeliveryCommand.Parameters.AddWithValue("@DeliveryDate", DeliveryDate.Date);
+            insertDeliveryCommand.Parameters.AddWithValue("@BranchID", Branch.BranchID);
+            
+
+
+            //@DeliveryID int,
+            //@DeliveryDate datetime,
+            //@BranchID int,
+            //@DeliveryReturned bit,
+            //@UserReturnedBy int,
+            //@CanEditReturnedDeliveries bit
+
+
+            SqlParameter returnValue = new SqlParameter();
+            returnValue.Direction = ParameterDirection.ReturnValue;
+            insertDeliveryCommand.Parameters.Add(returnValue);
+
+            try
+            {
+                insertDeliveryCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+            try
+            {
+                insertDeliveryConn.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            try
+            {
+                int errorCode = (int)returnValue.Value;
+                if (errorCode == 0)
+                {
+                    //Successfully Inserted
+                    result = true;
+                }
+                else if (errorCode == 1)
+                {
+                    //Delivery already exist
+                    result = false;
+                }
+                
+            }
+            catch
+            {
+            }
+
+
+            //result will be true only if this insert procedure was successful
+            return result;
         }
     }
 }

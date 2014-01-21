@@ -380,7 +380,7 @@ namespace Protea
                     int userbranch = Convert.ToInt32(myReader["BranchID"]);
                     bool changepwd = Convert.ToBoolean(myReader["ChangePwd"]);
 
-                    result = new User(userid,staffno, fname,lname,username,userpassword,Group.GetGroupByID(groupid),Branch.GetBranchByID(userbranch),changepwd);
+                    result = new User(userid, staffno, fname, lname, username, userpassword, Group.GetGroupByID(groupid), Branch.GetBranchByID(userbranch), changepwd);
 
                     
 

@@ -432,8 +432,8 @@ namespace Protea
             List<Branch> branches = Branch.GetBranches();
             for (int i = 0; i < branches.Count(); i++)
             {
-                Branch tempuser = branches.ToList()[i];
-                cboxBranch.Items.Add(tempuser);
+                Branch branch = branches.ToList()[i];
+                cboxBranch.Items.Add(branch);
             }
             selectItemInCboxBranch(cbUser.UserBranch);
             cboxBranchesDoneLoading = true;
@@ -976,6 +976,29 @@ namespace Protea
         {
             frmDeliveries frmDeliveries = new frmDeliveries();
             frmDeliveries.Show();
+        }
+
+        private void cboxTransType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CloseComboxBoxDropDownIfUserTyped(sender, e);
+        }
+        private void CloseComboxBoxDropDownIfUserTyped(object sender, KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+            if (char.IsLetter(e.KeyChar) || char.IsDigit(e.KeyChar))
+            {
+                ((ComboBox)sender).DroppedDown = false;
+            }
+            else
+            {
+                // char is neither letter or digit.
+                // there are more methods you can use to determine the
+                // type of char, e.g. char.IsSymbol
+            }
+        }
+        private void comboBoxPBranchForCashbookEntryCapture_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CloseComboxBoxDropDownIfUserTyped(sender, e);
         }
         
 

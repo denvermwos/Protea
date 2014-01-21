@@ -33,7 +33,7 @@
             this.dtpDeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.cboxDeliveryBranch = new System.Windows.Forms.ComboBox();
             this.txtDeliveryDescription = new System.Windows.Forms.TextBox();
-            this.cboxDelivered = new System.Windows.Forms.ComboBox();
+            this.cboxDeliveryReturned = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.btnSaveDelivery.TabIndex = 0;
             this.btnSaveDelivery.Text = "Save";
             this.btnSaveDelivery.UseVisualStyleBackColor = true;
+            this.btnSaveDelivery.Click += new System.EventHandler(this.btnSaveDelivery_Click);
             // 
             // btnCancelDelivery
             // 
@@ -60,34 +61,37 @@
             // 
             // dtpDeliveryDate
             // 
-            this.dtpDeliveryDate.Location = new System.Drawing.Point(80, 22);
+            this.dtpDeliveryDate.Location = new System.Drawing.Point(101, 22);
             this.dtpDeliveryDate.Name = "dtpDeliveryDate";
-            this.dtpDeliveryDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpDeliveryDate.Size = new System.Drawing.Size(179, 20);
             this.dtpDeliveryDate.TabIndex = 2;
             // 
             // cboxDeliveryBranch
             // 
             this.cboxDeliveryBranch.FormattingEnabled = true;
-            this.cboxDeliveryBranch.Location = new System.Drawing.Point(80, 48);
+            this.cboxDeliveryBranch.Location = new System.Drawing.Point(101, 48);
             this.cboxDeliveryBranch.Name = "cboxDeliveryBranch";
-            this.cboxDeliveryBranch.Size = new System.Drawing.Size(200, 21);
+            this.cboxDeliveryBranch.Size = new System.Drawing.Size(179, 21);
             this.cboxDeliveryBranch.TabIndex = 3;
             // 
             // txtDeliveryDescription
             // 
-            this.txtDeliveryDescription.Location = new System.Drawing.Point(80, 76);
+            this.txtDeliveryDescription.Location = new System.Drawing.Point(101, 76);
             this.txtDeliveryDescription.Multiline = true;
             this.txtDeliveryDescription.Name = "txtDeliveryDescription";
-            this.txtDeliveryDescription.Size = new System.Drawing.Size(450, 232);
+            this.txtDeliveryDescription.Size = new System.Drawing.Size(429, 232);
             this.txtDeliveryDescription.TabIndex = 4;
             // 
-            // cboxDelivered
+            // cboxDeliveryReturned
             // 
-            this.cboxDelivered.FormattingEnabled = true;
-            this.cboxDelivered.Location = new System.Drawing.Point(80, 314);
-            this.cboxDelivered.Name = "cboxDelivered";
-            this.cboxDelivered.Size = new System.Drawing.Size(200, 21);
-            this.cboxDelivered.TabIndex = 5;
+            this.cboxDeliveryReturned.FormattingEnabled = true;
+            this.cboxDeliveryReturned.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cboxDeliveryReturned.Location = new System.Drawing.Point(101, 314);
+            this.cboxDeliveryReturned.Name = "cboxDeliveryReturned";
+            this.cboxDeliveryReturned.Size = new System.Drawing.Size(200, 21);
+            this.cboxDeliveryReturned.TabIndex = 5;
             // 
             // label1
             // 
@@ -121,9 +125,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 317);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Delivered";
+            this.label4.Text = "Delivery Returned";
             // 
             // frmDelivery
             // 
@@ -134,7 +138,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cboxDelivered);
+            this.Controls.Add(this.cboxDeliveryReturned);
             this.Controls.Add(this.txtDeliveryDescription);
             this.Controls.Add(this.cboxDeliveryBranch);
             this.Controls.Add(this.dtpDeliveryDate);
@@ -154,7 +158,7 @@
         private System.Windows.Forms.DateTimePicker dtpDeliveryDate;
         private System.Windows.Forms.ComboBox cboxDeliveryBranch;
         private System.Windows.Forms.TextBox txtDeliveryDescription;
-        private System.Windows.Forms.ComboBox cboxDelivered;
+        private System.Windows.Forms.ComboBox cboxDeliveryReturned;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

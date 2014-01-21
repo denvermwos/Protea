@@ -333,6 +333,35 @@ namespace Protea
         {
             return BranchName;
         }
-        
+        public static void selectItemInCboxBranch(ComboBox combobox, Branch branchToSelect)
+        {
+            for (int i = 0; i < combobox.Items.Count; i++)
+            {
+                if (((Branch)(combobox.Items[i])).BranchID == branchToSelect.BranchID)
+                {
+                    combobox.SelectedIndex = i;
+                }
+            }
+        }
+        public static void PopulateCBoxBranches(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            List<Branch> branches = Branch.GetBranches();
+            for (int i = 0; i < branches.Count(); i++)
+            {
+                Branch branch = branches.ToList()[i];
+                comboBox.Items.Add(branch);
+            }
+        }
+        public static void PopulateCBoxBranches(ComboBox comboBox, Branch UsersBranch)
+        {
+            comboBox.Items.Clear();
+            List<Branch> pBranches = Branch.GetPBranches(UsersBranch);
+            for (int i = 0; i < pBranches.Count(); i++)
+            {
+                Branch branch = pBranches.ToList()[i];
+                comboBox.Items.Add(branch);
+            }
+        }
     }
 }

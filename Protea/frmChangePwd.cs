@@ -36,6 +36,7 @@ namespace Protea
             else if (txtPassword.Text == txtConfirmPassword.Text)
             {
                 ChangePwdUser.ChangePassword(txtPassword.Text);
+                //ChangePwdUser = User.GetUserByID(ChangePwdUser.UserID);//updates the user instance
                 //MessageBox.Show("Password has been changed.");
                 this.DialogResult = DialogResult.OK;
 

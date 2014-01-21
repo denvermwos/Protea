@@ -247,6 +247,7 @@
             this.cboxBranch.TabIndex = 4;
             this.cboxBranch.SelectedIndexChanged += new System.EventHandler(this.cboxBranch_SelectedIndexChanged);
             this.cboxBranch.DropDownClosed += new System.EventHandler(this.cboxBranch_DropDownClosed);
+            this.cboxBranch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CloseComboxBoxDropDownIfUserTyped);
             this.cboxBranch.Leave += new System.EventHandler(this.cboxBranch_Leave);
             this.cboxBranch.Validating += new System.ComponentModel.CancelEventHandler(this.cboxBranch_Validating);
             // 
@@ -934,6 +935,7 @@
             this.cboxTransType.TabIndex = 11;
             this.cboxTransType.SelectedIndexChanged += new System.EventHandler(this.cboxTransType_SelectedIndexChanged);
             this.cboxTransType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
+            this.cboxTransType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CloseComboxBoxDropDownIfUserTyped);
             this.cboxTransType.Validating += new System.ComponentModel.CancelEventHandler(this.cboxTransType_Validating);
             // 
             // comboBoxPBranchForCashbookEntryCapture
@@ -947,6 +949,7 @@
             this.comboBoxPBranchForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPBranchForCashbookEntryCapture.TabIndex = 12;
             this.comboBoxPBranchForCashbookEntryCapture.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
+            this.comboBoxPBranchForCashbookEntryCapture.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CloseComboxBoxDropDownIfUserTyped);
             this.comboBoxPBranchForCashbookEntryCapture.Validating += new System.ComponentModel.CancelEventHandler(this.cboxPBranch_Validating);
             // 
             // labelPBranch

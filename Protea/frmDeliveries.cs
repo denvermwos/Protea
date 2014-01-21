@@ -20,6 +20,7 @@ namespace Protea
 
         public void PopulateUnreturnedDeliveries()
         {
+            dataGridViewUnreturnedDeliveries.Rows.Clear();
             List<Delivery> unreturnedDeliveries = Delivery.GetUnreturnedDeliveries(frmMain.cbUser.UserBranch);
             for (int i = 0; i < unreturnedDeliveries.Count(); i++)
             {
@@ -33,6 +34,7 @@ namespace Protea
         }
         public void PopulateReturnedDeliveries()
         {
+            dataGridViewReturnedDeliveries.Rows.Clear();
             List<Delivery> returnedDeliveries = Delivery.GetReturnedDeliveries(dateTimeReturnedDeliveryStartDate.Value.Date,frmMain.cbUser.UserBranch);
             for (int i = 0; i < returnedDeliveries.Count(); i++)
             {
@@ -47,12 +49,22 @@ namespace Protea
 
         private void dataGridViewUnreturnedDeliveries_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            Delivery selectedDelivery = ((Delivery)dataGridViewUnreturnedDeliveries.SelectedRows[0].Tag);
+            frmDelivery frmDelivery = new frmDelivery(selectedDelivery);
+            frmDelivery.Show();
         }
 
         private void dataGridViewReturnedDeliveries_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Delivery selectedDelivery = ((Delivery)dataGridViewReturnedDeliveries.SelectedRows[0].Tag);
+            frmDelivery frmDelivery = new frmDelivery(selectedDelivery);
+            frmDelivery.Show();
+        }
 
+        private void dateTimeReturnedDeliveryStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            PopulateReturnedDeliveries();
+            PopulateUnreturnedDeliveries();
         }
     }
 }

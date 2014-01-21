@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimeReturnedDeliveryStartDate = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddNewDelivery = new System.Windows.Forms.Button();
             this.dataGridViewUnreturnedDeliveries = new System.Windows.Forms.DataGridView();
             this.ColumnUnreturnedDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnreturnedDeliveryBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,15 +108,16 @@
             this.dateTimeReturnedDeliveryStartDate.Name = "dateTimeReturnedDeliveryStartDate";
             this.dateTimeReturnedDeliveryStartDate.Size = new System.Drawing.Size(178, 20);
             this.dateTimeReturnedDeliveryStartDate.TabIndex = 5;
+            this.dateTimeReturnedDeliveryStartDate.ValueChanged += new System.EventHandler(this.dateTimeReturnedDeliveryStartDate_ValueChanged);
             // 
-            // button2
+            // btnAddNewDelivery
             // 
-            this.button2.Location = new System.Drawing.Point(430, 386);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Add New Delivery";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddNewDelivery.Location = new System.Drawing.Point(430, 386);
+            this.btnAddNewDelivery.Name = "btnAddNewDelivery";
+            this.btnAddNewDelivery.Size = new System.Drawing.Size(135, 23);
+            this.btnAddNewDelivery.TabIndex = 6;
+            this.btnAddNewDelivery.Text = "Add New Delivery";
+            this.btnAddNewDelivery.UseVisualStyleBackColor = true;
             // 
             // dataGridViewUnreturnedDeliveries
             // 
@@ -156,7 +157,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 475);
             this.Controls.Add(this.dataGridViewUnreturnedDeliveries);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAddNewDelivery);
             this.Controls.Add(this.dateTimeReturnedDeliveryStartDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -178,7 +179,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimeReturnedDeliveryStartDate;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddNewDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnedDeliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnedDeliveryBranch;
         private System.Windows.Forms.DataGridView dataGridViewUnreturnedDeliveries;
