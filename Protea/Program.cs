@@ -24,7 +24,8 @@ namespace Protea
                     frmChangePwd chngpwd = new frmChangePwd(frmLogin.user);
                     if (chngpwd.ShowDialog() == DialogResult.OK)
                     {
-                        Application.Run(new frmMain(frmLogin.user));
+
+                        Application.Run(new frmMain(User.GetUserByID(frmLogin.user.UserID)));
                     }
 
                 }

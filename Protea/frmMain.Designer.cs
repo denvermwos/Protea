@@ -870,13 +870,12 @@
             this.groupBox1.Size = new System.Drawing.Size(950, 51);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Transaction";
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(252, 22);
+            this.label6.Location = new System.Drawing.Point(220, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 15;
@@ -897,7 +896,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCBDescription.Location = new System.Drawing.Point(3, 19);
             this.txtCBDescription.Name = "txtCBDescription";
-            this.txtCBDescription.Size = new System.Drawing.Size(245, 20);
+            this.txtCBDescription.Size = new System.Drawing.Size(211, 20);
             this.txtCBDescription.TabIndex = 10;
             this.txtCBDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
@@ -917,10 +916,11 @@
             this.cboxDorC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxDorC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxDorC.FormattingEnabled = true;
-            this.cboxDorC.Location = new System.Drawing.Point(664, 19);
+            this.cboxDorC.Location = new System.Drawing.Point(629, 19);
             this.cboxDorC.Name = "cboxDorC";
-            this.cboxDorC.Size = new System.Drawing.Size(69, 21);
+            this.cboxDorC.Size = new System.Drawing.Size(104, 21);
             this.cboxDorC.TabIndex = 14;
+            this.cboxDorC.SelectedIndexChanged += new System.EventHandler(this.cboxDorC_SelectedIndexChanged);
             this.cboxDorC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
             // cboxTransType
@@ -929,7 +929,7 @@
             this.cboxTransType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboxTransType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboxTransType.FormattingEnabled = true;
-            this.cboxTransType.Location = new System.Drawing.Point(289, 19);
+            this.cboxTransType.Location = new System.Drawing.Point(257, 19);
             this.cboxTransType.Name = "cboxTransType";
             this.cboxTransType.Size = new System.Drawing.Size(187, 21);
             this.cboxTransType.TabIndex = 11;
@@ -944,7 +944,7 @@
             this.comboBoxPBranchForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPBranchForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxPBranchForCashbookEntryCapture.FormattingEnabled = true;
-            this.comboBoxPBranchForCashbookEntryCapture.Location = new System.Drawing.Point(534, 19);
+            this.comboBoxPBranchForCashbookEntryCapture.Location = new System.Drawing.Point(502, 19);
             this.comboBoxPBranchForCashbookEntryCapture.Name = "comboBoxPBranchForCashbookEntryCapture";
             this.comboBoxPBranchForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPBranchForCashbookEntryCapture.TabIndex = 12;
@@ -956,7 +956,7 @@
             // 
             this.labelPBranch.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelPBranch.AutoSize = true;
-            this.labelPBranch.Location = new System.Drawing.Point(480, 22);
+            this.labelPBranch.Location = new System.Drawing.Point(448, 22);
             this.labelPBranch.Name = "labelPBranch";
             this.labelPBranch.Size = new System.Drawing.Size(48, 13);
             this.labelPBranch.TabIndex = 12;
@@ -966,7 +966,7 @@
             // 
             this.labelPUser.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelPUser.AutoSize = true;
-            this.labelPUser.Location = new System.Drawing.Point(480, 22);
+            this.labelPUser.Location = new System.Drawing.Point(448, 22);
             this.labelPUser.Name = "labelPUser";
             this.labelPUser.Size = new System.Drawing.Size(36, 13);
             this.labelPUser.TabIndex = 16;
@@ -979,7 +979,7 @@
             this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxPUsersForCashbookEntryCapture.FormattingEnabled = true;
-            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(534, 19);
+            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(502, 19);
             this.comboBoxPUsersForCashbookEntryCapture.Name = "comboBoxPUsersForCashbookEntryCapture";
             this.comboBoxPUsersForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPUsersForCashbookEntryCapture.TabIndex = 13;
@@ -1389,9 +1389,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(6, 28);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 13);
+            this.label12.Size = new System.Drawing.Size(220, 13);
             this.label12.TabIndex = 9;
-            this.label12.Text = "Select Delivery Date of Card";
+            this.label12.Text = "Select Delivery from which Card is being Sold";
             // 
             // numericUpDownItemsInSale
             // 

@@ -10,17 +10,18 @@ namespace Protea
 {
     public class PublicationSale
     {
+        public int PublicationSaleID { get; set; }
         public DateTime PublicationSaleDate { get; set; }
         public DateTime PublicationDeliveryDate { get; set; }
         public Publication Publication { get; set; }
         public User User { get; set; }
         public Branch Branch { get; set; }
         public string Description { get; set; }
-        public int Quantity { get; set; }
-        public decimal TotalPrice { get; set; }
+        //public int Quantity { get; set; }
+        public decimal Price { get; set; }
 
 
-        public PublicationSale(DateTime publicationSaleDate, DateTime publicationDeliveryDate, Publication publication, User user, Branch branch, string description, int quantity, decimal totalPrice)
+        public PublicationSale(DateTime publicationSaleDate, DateTime publicationDeliveryDate, Publication publication, User user, Branch branch, string description, decimal price)
         {
             PublicationSaleDate = publicationSaleDate;
             PublicationDeliveryDate = publicationDeliveryDate;
@@ -28,8 +29,20 @@ namespace Protea
             User = user;
             Branch = branch;
             Description = description;
-            Quantity = quantity;
-            TotalPrice = totalPrice;
+            //Quantity = quantity;
+            Price = price;
+        }
+        public PublicationSale(int publicationSaleID, DateTime publicationSaleDate, DateTime publicationDeliveryDate, Publication publication, User user, Branch branch, string description, decimal price)
+        {
+            PublicationSaleID = publicationSaleID;
+            PublicationSaleDate = publicationSaleDate;
+            PublicationDeliveryDate = publicationDeliveryDate;
+            Publication = publication;
+            User = user;
+            Branch = branch;
+            Description = description;
+            //Quantity = quantity;
+            Price = price;
         }
         public string Sell()
         {
@@ -55,7 +68,7 @@ namespace Protea
             uspSellPublicationCommand.Parameters.AddWithValue("@Description", Description);
             uspSellPublicationCommand.Parameters.AddWithValue("@PublicationID", Publication.PublicationID);
             uspSellPublicationCommand.Parameters.AddWithValue("@PublicationName", Publication.PublicationName);
-            uspSellPublicationCommand.Parameters.AddWithValue("@Quantity", Quantity);
+            uspSellPublicationCommand.Parameters.AddWithValue("@Price", Price);
             uspSellPublicationCommand.Parameters.AddWithValue("@UserID", User.UserID);
 
             SqlParameter returnValue = new SqlParameter();
@@ -96,8 +109,90 @@ namespace Protea
                     result = "Delivery does not exist";
                 }
             }
-            catch
+            catch( Exception ex)
             {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+
+
+            return result;
+        }
+        public string Cancel()
+        {
+            /*
+             * date for cashbook entry
+             * description, which is gonna be the publication sale description with "ERROR - dd-MMM " appended to front
+             * PublicationSaleID so we can delete the sale
+             * DeliveryID so we check if the delivery is still unreturned, we would obviously notwant to allow the cancellation
+             * Amount
+            */
+            string result = "No Sale";
+
+
+            SqlConnection SellPublicationConn = ConnFactory.GetConnection();
+
+            try
+            {
+                SellPublicationConn.Open();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            SqlCommand uspSellPublicationCommand = new SqlCommand("uspSellPublication", SellPublicationConn);
+            uspSellPublicationCommand.CommandType = CommandType.StoredProcedure;
+            uspSellPublicationCommand.Parameters.AddWithValue("@PublicationSaleDate", PublicationSaleDate);
+            uspSellPublicationCommand.Parameters.AddWithValue("@PublicationDeliveryDate", PublicationDeliveryDate);
+            uspSellPublicationCommand.Parameters.AddWithValue("@BranchID", User.UserBranch.BranchID);
+            uspSellPublicationCommand.Parameters.AddWithValue("@Description", Description);
+            uspSellPublicationCommand.Parameters.AddWithValue("@PublicationID", Publication.PublicationID);
+            uspSellPublicationCommand.Parameters.AddWithValue("@PublicationName", Publication.PublicationName);
+            //uspSellPublicationCommand.Parameters.AddWithValue("@Quantity", Quantity);
+            uspSellPublicationCommand.Parameters.AddWithValue("@UserID", User.UserID);
+
+            SqlParameter returnValue = new SqlParameter();
+            returnValue.Direction = ParameterDirection.ReturnValue;
+            uspSellPublicationCommand.Parameters.Add(returnValue);
+
+            try
+            {
+                uspSellPublicationCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+            try
+            {
+                SellPublicationConn.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
+            }
+
+            try
+            {
+                int errorCode = (int)returnValue.Value;
+                if (errorCode == 0)
+                {
+                    result = "";
+                }
+                else if (errorCode == 1)
+                {
+                    result = "Selected delivery has already been returned";
+                }
+                else if (errorCode == 2)
+                {
+                    result = "Delivery does not exist";
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogger.LogMessage(ex);
             }
 
 
@@ -153,13 +248,13 @@ namespace Protea
                     DateTime publicationSaleDate = Convert.ToDateTime(myReader["PublicationSaleDate"]);
                     DateTime publicationDeliveryDate = Convert.ToDateTime(myReader["PublicationDeliveryDate"]);
                     string description = myReader["Description"].ToString();
-                    int quantity = Convert.ToInt16(myReader["Quantity"]);
+                    
                     decimal totalPrice = Convert.ToDecimal(myReader["TotalPrice"]);
                     Branch branchPublicationSoldIn = new Branch(Convert.ToInt16(myReader["BranchID"]), myReader["BranchName"].ToString(), Convert.ToDecimal(myReader["CBBalance"]), Convert.ToDecimal(myReader["DropBalance"]));
                     User userPublicationSoldBy = new User(Convert.ToInt16(myReader["UserID"]), myReader["FName"].ToString(), myReader["LName"].ToString());
                     Publication publication = new Publication(Convert.ToInt32(myReader["PublicationID"]), myReader["PublicationName"].ToString(), Convert.ToDecimal(myReader["PublicationPrice"]));
 
-                    PublicationSale tempPublicationSale = new PublicationSale(publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, quantity, totalPrice);
+                    PublicationSale tempPublicationSale = new PublicationSale(publicationSaleID, publicationSaleDate, publicationDeliveryDate, publication, userPublicationSoldBy, branchPublicationSoldIn, description, totalPrice);
 
                     publicationSales.Add(tempPublicationSale);
 

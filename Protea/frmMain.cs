@@ -73,6 +73,10 @@ namespace Protea
                 tcProtea.TabPages.Remove(tcProtea.TabPages[tabPageTransactionTotalByPBranch.Name]);//"tabPageTransactionTotalByPUser"]);
 
             }
+            if (!cbUser.UserGroup.GroupsAccessDict["Racecards Sales and Deliveries"].HasAccess)
+            {
+                tcProtea.TabPages.Remove(tcProtea.TabPages[tabPageRaceCards.Name]);
+            }
 
 
             if (!cbUser.UserGroup.GroupsAccessDict["Edit Users Branches Transactions Groups"].HasAccess)
@@ -82,7 +86,7 @@ namespace Protea
             }
             if (!cbUser.UserGroup.GroupsAccessDict["Change Own Branch"].HasAccess)
             {
-                gbBranch.Visible = false;
+                cboxBranch.Enabled = false;
             }
             if (!cbUser.UserGroup.GroupsAccessDict["Change Recon Viewer User"].HasAccess)
             {
@@ -96,6 +100,7 @@ namespace Protea
             {
                 gbPendingTransfers.Visible = false;
             }
+            
         }
         private void PopulateUserRecon()
         {
@@ -114,8 +119,8 @@ namespace Protea
 
                 publicationSaleRow.Cells[ColumnSalesHistoryDeliveryDate.Index].Value = tempPublicationSale.PublicationDeliveryDate.ToString("dd MMM");
                 publicationSaleRow.Cells[ColumnSalesHistoryPublicationName.Index].Value = tempPublicationSale.Publication.PublicationName;
-                publicationSaleRow.Cells[ColumnSalesHistoryQuantity.Index].Value = tempPublicationSale.Quantity.ToString();
-                publicationSaleRow.Cells[ColumnSalesHistoryTotalPrice.Index].Value = tempPublicationSale.TotalPrice.ToString();
+                //publicationSaleRow.Cells[ColumnSalesHistoryQuantity.Index].Value = tempPublicationSale.Quantity.ToString();
+                publicationSaleRow.Cells[ColumnSalesHistoryTotalPrice.Index].Value = tempPublicationSale.Price.ToString();
                 dataGridViewPublicationSalesHistory.Rows.Add(publicationSaleRow);
             }
         }
@@ -172,7 +177,7 @@ namespace Protea
             cboxTransTypeFilter.SelectedIndex = 0;
 
             PopulateDorCCombobox();
-            PopulatePublicationSalesDGV();
+            //PopulatePublicationSalesDGV();
 
             LoadBranchSpecificDataToControls();
         }
@@ -348,8 +353,8 @@ namespace Protea
         {
             cboxDorC.Items.Clear();
 
-            cboxDCItem debit = new cboxDCItem("Debit", -1);
-            cboxDCItem credit = new cboxDCItem("Credit", +1);
+            cboxDCItem debit = new cboxDCItem("Debit (Out)", -1);
+            cboxDCItem credit = new cboxDCItem("Credit (In)", +1);
 
             cboxDorC.Items.Add(debit);
             cboxDorC.Items.Add(credit);
@@ -709,7 +714,7 @@ namespace Protea
             {
                 result += "\nAmount must be a decimal";
             }
-            if ((txtCBAmount.Text == "") || (txtCBDescription.Text == ""))
+            if ((txtCBAmount.Text == ""))// || (txtCBDescription.Text == ""))
             {
                 result += "\nYou are required to fill in all fields";
             }
@@ -947,7 +952,7 @@ namespace Protea
 
         private void dateTimePickerPublicationSalesHistory_ValueChanged(object sender, EventArgs e)
         {
-            PopulatePublicationSalesDGV();
+            //PopulatePublicationSalesDGV();
         }
 
         private void buttonPurchasePublications_Click(object sender, EventArgs e)
@@ -958,7 +963,7 @@ namespace Protea
                 try
                 {
                     //todo code for purchase
-                    //PublicationSale publicationSale = new PublicationSale(DateTime.Now.Date,monthCalendarDeliveryDate
+                    //PublicationSale publicationSale = new PublicationSale(DateTime.Now.Date, monthCalendarDeliveryDate);
                 }
                 catch (Exception ex)
                 {
@@ -999,6 +1004,11 @@ namespace Protea
         private void comboBoxPBranchForCashbookEntryCapture_KeyPress(object sender, KeyPressEventArgs e)
         {
             CloseComboxBoxDropDownIfUserTyped(sender, e);
+        }
+
+        private void cboxDorC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
         
 
