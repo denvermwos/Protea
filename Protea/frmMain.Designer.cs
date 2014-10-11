@@ -78,6 +78,7 @@
             this.DropSafe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDropRefresh = new System.Windows.Forms.Button();
             this.tpCashbook = new System.Windows.Forms.TabPage();
+            this.btnPrintTransactions = new System.Windows.Forms.Button();
             this.chkboxShowTransactions = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -167,6 +168,8 @@
             this.labelCashbookBalance = new System.Windows.Forms.Label();
             this.textBoxCashbookBalance = new System.Windows.Forms.TextBox();
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
+            this.prntdocTransactions = new System.Drawing.Printing.PrintDocument();
+            this.gbEditUsers = new System.Windows.Forms.GroupBox();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -194,13 +197,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPublicationSalesHistory)).BeginInit();
             this.gbEditEntities.SuspendLayout();
             this.gbBranch.SuspendLayout();
+            this.gbEditUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUsers
             // 
-            this.btnUsers.Location = new System.Drawing.Point(12, 22);
+            this.btnUsers.Location = new System.Drawing.Point(6, 19);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(75, 23);
+            this.btnUsers.Size = new System.Drawing.Size(68, 23);
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Users";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -208,9 +212,9 @@
             // 
             // btnBranches
             // 
-            this.btnBranches.Location = new System.Drawing.Point(92, 22);
+            this.btnBranches.Location = new System.Drawing.Point(6, 19);
             this.btnBranches.Name = "btnBranches";
-            this.btnBranches.Size = new System.Drawing.Size(75, 23);
+            this.btnBranches.Size = new System.Drawing.Size(68, 23);
             this.btnBranches.TabIndex = 2;
             this.btnBranches.Text = "Branches";
             this.btnBranches.UseVisualStyleBackColor = true;
@@ -253,9 +257,9 @@
             // 
             // btnTransactions
             // 
-            this.btnTransactions.Location = new System.Drawing.Point(173, 22);
+            this.btnTransactions.Location = new System.Drawing.Point(80, 19);
             this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(83, 23);
+            this.btnTransactions.Size = new System.Drawing.Size(76, 23);
             this.btnTransactions.TabIndex = 3;
             this.btnTransactions.Text = "Transactions";
             this.btnTransactions.UseVisualStyleBackColor = true;
@@ -604,6 +608,7 @@
             // 
             // tpCashbook
             // 
+            this.tpCashbook.Controls.Add(this.btnPrintTransactions);
             this.tpCashbook.Controls.Add(this.chkboxShowTransactions);
             this.tpCashbook.Controls.Add(this.groupBox2);
             this.tpCashbook.Controls.Add(this.dgvCashbookEntries);
@@ -616,6 +621,16 @@
             this.tpCashbook.TabIndex = 0;
             this.tpCashbook.Text = "Cashbook Transactions";
             this.tpCashbook.UseVisualStyleBackColor = true;
+            // 
+            // btnPrintTransactions
+            // 
+            this.btnPrintTransactions.Location = new System.Drawing.Point(139, 83);
+            this.btnPrintTransactions.Name = "btnPrintTransactions";
+            this.btnPrintTransactions.Size = new System.Drawing.Size(75, 23);
+            this.btnPrintTransactions.TabIndex = 18;
+            this.btnPrintTransactions.Text = "Print";
+            this.btnPrintTransactions.UseVisualStyleBackColor = true;
+            this.btnPrintTransactions.Click += new System.EventHandler(this.btnPrintTransactions_Click);
             // 
             // chkboxShowTransactions
             // 
@@ -809,6 +824,7 @@
             // 
             // Amount
             // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Amount.DefaultCellStyle = dataGridViewCellStyle10;
             this.Amount.HeaderText = "Amount";
@@ -1500,9 +1516,9 @@
             // 
             // btnGroups
             // 
-            this.btnGroups.Location = new System.Drawing.Point(262, 22);
+            this.btnGroups.Location = new System.Drawing.Point(162, 19);
             this.btnGroups.Name = "btnGroups";
-            this.btnGroups.Size = new System.Drawing.Size(75, 23);
+            this.btnGroups.Size = new System.Drawing.Size(68, 23);
             this.btnGroups.TabIndex = 7;
             this.btnGroups.Text = "Groups";
             this.btnGroups.UseVisualStyleBackColor = true;
@@ -1510,13 +1526,12 @@
             // 
             // gbEditEntities
             // 
-            this.gbEditEntities.Controls.Add(this.btnUsers);
             this.gbEditEntities.Controls.Add(this.btnGroups);
             this.gbEditEntities.Controls.Add(this.btnBranches);
             this.gbEditEntities.Controls.Add(this.btnTransactions);
-            this.gbEditEntities.Location = new System.Drawing.Point(12, 12);
+            this.gbEditEntities.Location = new System.Drawing.Point(126, 12);
             this.gbEditEntities.Name = "gbEditEntities";
-            this.gbEditEntities.Size = new System.Drawing.Size(350, 53);
+            this.gbEditEntities.Size = new System.Drawing.Size(236, 53);
             this.gbEditEntities.TabIndex = 8;
             this.gbEditEntities.TabStop = false;
             // 
@@ -1578,11 +1593,26 @@
             this.timer30sec.Interval = 30000;
             this.timer30sec.Tick += new System.EventHandler(this.timer30sec_Tick);
             // 
+            // prntdocTransactions
+            // 
+            this.prntdocTransactions.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.prntdocTransactions_BeginPrint);
+            this.prntdocTransactions.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.prntdocTransactions_PrintPage);
+            // 
+            // gbEditUsers
+            // 
+            this.gbEditUsers.Controls.Add(this.btnUsers);
+            this.gbEditUsers.Location = new System.Drawing.Point(31, 12);
+            this.gbEditUsers.Name = "gbEditUsers";
+            this.gbEditUsers.Size = new System.Drawing.Size(89, 53);
+            this.gbEditUsers.TabIndex = 10;
+            this.gbEditUsers.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 471);
+            this.Controls.Add(this.gbEditUsers);
             this.Controls.Add(this.gbBranch);
             this.Controls.Add(this.gbEditEntities);
             this.Controls.Add(this.tcProtea);
@@ -1627,6 +1657,7 @@
             this.gbEditEntities.ResumeLayout(false);
             this.gbBranch.ResumeLayout(false);
             this.gbBranch.PerformLayout();
+            this.gbEditUsers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1719,17 +1750,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserStaffNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPUserTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateandTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BranchCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PBranchCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTransactionListPUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EntryType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScannedFile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CapturedBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPBranch;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromPBranchsCashbook;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalFromCashbook;
@@ -1757,6 +1777,20 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPublicationSaleDeliveryDate;
         private System.Windows.Forms.Button buttonDeliveries;
+        private System.Windows.Forms.Button btnPrintTransactions;
+        private System.Drawing.Printing.PrintDocument prntdocTransactions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateandTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BranchCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PBranchCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTransactionListPUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EntryType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScannedFile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CapturedBy;
+        private System.Windows.Forms.GroupBox gbEditUsers;
     }
 }
 
