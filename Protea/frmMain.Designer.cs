@@ -72,12 +72,14 @@
             this.rbRecieveCashFrom = new System.Windows.Forms.RadioButton();
             this.rbGiveCashTo = new System.Windows.Forms.RadioButton();
             this.tpBranchCashbookAndDropFigures = new System.Windows.Forms.TabPage();
+            this.ExportBranchFigures = new System.Windows.Forms.Button();
             this.dgvBranchBalances = new System.Windows.Forms.DataGridView();
             this.CompanysBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DropSafe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDropRefresh = new System.Windows.Forms.Button();
             this.tpCashbook = new System.Windows.Forms.TabPage();
+            this.ExportTransactions = new System.Windows.Forms.Button();
             this.btnPrintTransactions = new System.Windows.Forms.Button();
             this.chkboxShowTransactions = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -114,6 +116,7 @@
             this.tcProtea = new System.Windows.Forms.TabControl();
             this.tabPageTransactionTotalByPBranch = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ExportTransactonsByPBranch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerPBranchAuditStart = new System.Windows.Forms.DateTimePicker();
@@ -170,6 +173,7 @@
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
             this.prntdocTransactions = new System.Drawing.Printing.PrintDocument();
             this.gbEditUsers = new System.Windows.Forms.GroupBox();
+            this.ExportTransactionsByPUser = new System.Windows.Forms.Button();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -223,7 +227,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(919, 21);
+            this.button4.Location = new System.Drawing.Point(1153, 21);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 23);
             this.button4.TabIndex = 5;
@@ -272,7 +276,7 @@
             this.tpRecon.Location = new System.Drawing.Point(4, 22);
             this.tpRecon.Name = "tpRecon";
             this.tpRecon.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRecon.Size = new System.Drawing.Size(956, 362);
+            this.tpRecon.Size = new System.Drawing.Size(1190, 362);
             this.tpRecon.TabIndex = 2;
             this.tpRecon.Text = "Recon";
             this.tpRecon.UseVisualStyleBackColor = true;
@@ -531,16 +535,27 @@
             // 
             // tpBranchCashbookAndDropFigures
             // 
+            this.tpBranchCashbookAndDropFigures.Controls.Add(this.ExportBranchFigures);
             this.tpBranchCashbookAndDropFigures.Controls.Add(this.dgvBranchBalances);
             this.tpBranchCashbookAndDropFigures.Controls.Add(this.btnDropRefresh);
             this.tpBranchCashbookAndDropFigures.Location = new System.Drawing.Point(4, 22);
             this.tpBranchCashbookAndDropFigures.Name = "tpBranchCashbookAndDropFigures";
             this.tpBranchCashbookAndDropFigures.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBranchCashbookAndDropFigures.Size = new System.Drawing.Size(956, 362);
+            this.tpBranchCashbookAndDropFigures.Size = new System.Drawing.Size(1190, 362);
             this.tpBranchCashbookAndDropFigures.TabIndex = 1;
             this.tpBranchCashbookAndDropFigures.Text = "Branch Figures";
             this.tpBranchCashbookAndDropFigures.UseVisualStyleBackColor = true;
             this.tpBranchCashbookAndDropFigures.Enter += new System.EventHandler(this.BranchFigures_Enter);
+            // 
+            // ExportBranchFigures
+            // 
+            this.ExportBranchFigures.Location = new System.Drawing.Point(89, 7);
+            this.ExportBranchFigures.Name = "ExportBranchFigures";
+            this.ExportBranchFigures.Size = new System.Drawing.Size(75, 23);
+            this.ExportBranchFigures.TabIndex = 2;
+            this.ExportBranchFigures.Text = "Export";
+            this.ExportBranchFigures.UseVisualStyleBackColor = true;
+            this.ExportBranchFigures.Click += new System.EventHandler(this.ExportBranchFigures_Click);
             // 
             // dgvBranchBalances
             // 
@@ -608,6 +623,7 @@
             // 
             // tpCashbook
             // 
+            this.tpCashbook.Controls.Add(this.ExportTransactions);
             this.tpCashbook.Controls.Add(this.btnPrintTransactions);
             this.tpCashbook.Controls.Add(this.chkboxShowTransactions);
             this.tpCashbook.Controls.Add(this.groupBox2);
@@ -617,10 +633,20 @@
             this.tpCashbook.Location = new System.Drawing.Point(4, 22);
             this.tpCashbook.Name = "tpCashbook";
             this.tpCashbook.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCashbook.Size = new System.Drawing.Size(956, 362);
+            this.tpCashbook.Size = new System.Drawing.Size(1190, 362);
             this.tpCashbook.TabIndex = 0;
             this.tpCashbook.Text = "Cashbook Transactions";
             this.tpCashbook.UseVisualStyleBackColor = true;
+            // 
+            // ExportTransactions
+            // 
+            this.ExportTransactions.Location = new System.Drawing.Point(221, 83);
+            this.ExportTransactions.Name = "ExportTransactions";
+            this.ExportTransactions.Size = new System.Drawing.Size(75, 23);
+            this.ExportTransactions.TabIndex = 19;
+            this.ExportTransactions.Text = "Export";
+            this.ExportTransactions.UseVisualStyleBackColor = true;
+            this.ExportTransactions.Click += new System.EventHandler(this.ExportTransactions_Click);
             // 
             // btnPrintTransactions
             // 
@@ -883,7 +909,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(3, 308);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(950, 51);
+            this.groupBox1.Size = new System.Drawing.Size(1184, 51);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -891,7 +917,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(220, 22);
+            this.label6.Location = new System.Drawing.Point(454, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 15;
@@ -900,7 +926,7 @@
             // txtCBAmount
             // 
             this.txtCBAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCBAmount.Location = new System.Drawing.Point(739, 19);
+            this.txtCBAmount.Location = new System.Drawing.Point(973, 19);
             this.txtCBAmount.Name = "txtCBAmount";
             this.txtCBAmount.Size = new System.Drawing.Size(108, 20);
             this.txtCBAmount.TabIndex = 15;
@@ -912,14 +938,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCBDescription.Location = new System.Drawing.Point(3, 19);
             this.txtCBDescription.Name = "txtCBDescription";
-            this.txtCBDescription.Size = new System.Drawing.Size(211, 20);
+            this.txtCBDescription.Size = new System.Drawing.Size(445, 20);
             this.txtCBDescription.TabIndex = 10;
             this.txtCBDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterToNextControlHandler);
             // 
             // btnSubmitTransaction
             // 
             this.btnSubmitTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmitTransaction.Location = new System.Drawing.Point(853, 17);
+            this.btnSubmitTransaction.Location = new System.Drawing.Point(1087, 17);
             this.btnSubmitTransaction.Name = "btnSubmitTransaction";
             this.btnSubmitTransaction.Size = new System.Drawing.Size(75, 23);
             this.btnSubmitTransaction.TabIndex = 16;
@@ -932,7 +958,7 @@
             this.cboxDorC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxDorC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxDorC.FormattingEnabled = true;
-            this.cboxDorC.Location = new System.Drawing.Point(629, 19);
+            this.cboxDorC.Location = new System.Drawing.Point(863, 19);
             this.cboxDorC.Name = "cboxDorC";
             this.cboxDorC.Size = new System.Drawing.Size(104, 21);
             this.cboxDorC.TabIndex = 14;
@@ -945,7 +971,7 @@
             this.cboxTransType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboxTransType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboxTransType.FormattingEnabled = true;
-            this.cboxTransType.Location = new System.Drawing.Point(257, 19);
+            this.cboxTransType.Location = new System.Drawing.Point(491, 19);
             this.cboxTransType.Name = "cboxTransType";
             this.cboxTransType.Size = new System.Drawing.Size(187, 21);
             this.cboxTransType.TabIndex = 11;
@@ -960,7 +986,7 @@
             this.comboBoxPBranchForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPBranchForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxPBranchForCashbookEntryCapture.FormattingEnabled = true;
-            this.comboBoxPBranchForCashbookEntryCapture.Location = new System.Drawing.Point(502, 19);
+            this.comboBoxPBranchForCashbookEntryCapture.Location = new System.Drawing.Point(736, 19);
             this.comboBoxPBranchForCashbookEntryCapture.Name = "comboBoxPBranchForCashbookEntryCapture";
             this.comboBoxPBranchForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPBranchForCashbookEntryCapture.TabIndex = 12;
@@ -972,7 +998,7 @@
             // 
             this.labelPBranch.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelPBranch.AutoSize = true;
-            this.labelPBranch.Location = new System.Drawing.Point(448, 22);
+            this.labelPBranch.Location = new System.Drawing.Point(682, 22);
             this.labelPBranch.Name = "labelPBranch";
             this.labelPBranch.Size = new System.Drawing.Size(48, 13);
             this.labelPBranch.TabIndex = 12;
@@ -982,7 +1008,7 @@
             // 
             this.labelPUser.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelPUser.AutoSize = true;
-            this.labelPUser.Location = new System.Drawing.Point(448, 22);
+            this.labelPUser.Location = new System.Drawing.Point(682, 22);
             this.labelPUser.Name = "labelPUser";
             this.labelPUser.Size = new System.Drawing.Size(36, 13);
             this.labelPUser.TabIndex = 16;
@@ -995,7 +1021,7 @@
             this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPUsersForCashbookEntryCapture.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxPUsersForCashbookEntryCapture.FormattingEnabled = true;
-            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(502, 19);
+            this.comboBoxPUsersForCashbookEntryCapture.Location = new System.Drawing.Point(736, 19);
             this.comboBoxPUsersForCashbookEntryCapture.Name = "comboBoxPUsersForCashbookEntryCapture";
             this.comboBoxPUsersForCashbookEntryCapture.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPUsersForCashbookEntryCapture.TabIndex = 13;
@@ -1017,7 +1043,7 @@
             this.tcProtea.Location = new System.Drawing.Point(12, 71);
             this.tcProtea.Name = "tcProtea";
             this.tcProtea.SelectedIndex = 0;
-            this.tcProtea.Size = new System.Drawing.Size(964, 388);
+            this.tcProtea.Size = new System.Drawing.Size(1198, 388);
             this.tcProtea.TabIndex = 6;
             // 
             // tabPageTransactionTotalByPBranch
@@ -1027,7 +1053,7 @@
             this.tabPageTransactionTotalByPBranch.Location = new System.Drawing.Point(4, 22);
             this.tabPageTransactionTotalByPBranch.Name = "tabPageTransactionTotalByPBranch";
             this.tabPageTransactionTotalByPBranch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransactionTotalByPBranch.Size = new System.Drawing.Size(956, 362);
+            this.tabPageTransactionTotalByPBranch.Size = new System.Drawing.Size(1190, 362);
             this.tabPageTransactionTotalByPBranch.TabIndex = 3;
             this.tabPageTransactionTotalByPBranch.Text = "Transaction Total By #Branch";
             this.tabPageTransactionTotalByPBranch.UseVisualStyleBackColor = true;
@@ -1036,6 +1062,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.ExportTransactonsByPBranch);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.dateTimePickerPBranchAuditStart);
@@ -1044,10 +1071,20 @@
             this.groupBox4.Controls.Add(this.comboBoxTransactionTotalByPBranchFilter);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(941, 45);
+            this.groupBox4.Size = new System.Drawing.Size(1175, 45);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filter";
+            // 
+            // ExportTransactonsByPBranch
+            // 
+            this.ExportTransactonsByPBranch.Location = new System.Drawing.Point(929, 15);
+            this.ExportTransactonsByPBranch.Name = "ExportTransactonsByPBranch";
+            this.ExportTransactonsByPBranch.Size = new System.Drawing.Size(75, 23);
+            this.ExportTransactonsByPBranch.TabIndex = 13;
+            this.ExportTransactonsByPBranch.Text = "Export";
+            this.ExportTransactonsByPBranch.UseVisualStyleBackColor = true;
+            this.ExportTransactonsByPBranch.Click += new System.EventHandler(this.ExportTransactonsByPBranch_Click);
             // 
             // label4
             // 
@@ -1122,7 +1159,7 @@
             this.dataGridViewTransactionByPBranch.Name = "dataGridViewTransactionByPBranch";
             this.dataGridViewTransactionByPBranch.RowHeadersVisible = false;
             this.dataGridViewTransactionByPBranch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTransactionByPBranch.Size = new System.Drawing.Size(944, 312);
+            this.dataGridViewTransactionByPBranch.Size = new System.Drawing.Size(1178, 312);
             this.dataGridViewTransactionByPBranch.TabIndex = 0;
             // 
             // ColumnPBranch
@@ -1155,7 +1192,7 @@
             this.tabPageTransactionTotalByPUser.Controls.Add(this.dataGridViewTransactionByPUser);
             this.tabPageTransactionTotalByPUser.Location = new System.Drawing.Point(4, 22);
             this.tabPageTransactionTotalByPUser.Name = "tabPageTransactionTotalByPUser";
-            this.tabPageTransactionTotalByPUser.Size = new System.Drawing.Size(956, 362);
+            this.tabPageTransactionTotalByPUser.Size = new System.Drawing.Size(1190, 362);
             this.tabPageTransactionTotalByPUser.TabIndex = 4;
             this.tabPageTransactionTotalByPUser.Text = "Transaction Total By #User";
             this.tabPageTransactionTotalByPUser.UseVisualStyleBackColor = true;
@@ -1164,6 +1201,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.ExportTransactionsByPUser);
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.dateTimePickerPUserAuditStart);
@@ -1172,7 +1210,7 @@
             this.groupBox5.Controls.Add(this.comboBoxTransactionTotalByPUserFilter);
             this.groupBox5.Location = new System.Drawing.Point(8, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(941, 45);
+            this.groupBox5.Size = new System.Drawing.Size(1179, 45);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filter";
@@ -1249,7 +1287,7 @@
             this.dataGridViewTransactionByPUser.Name = "dataGridViewTransactionByPUser";
             this.dataGridViewTransactionByPUser.RowHeadersVisible = false;
             this.dataGridViewTransactionByPUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTransactionByPUser.Size = new System.Drawing.Size(941, 305);
+            this.dataGridViewTransactionByPUser.Size = new System.Drawing.Size(1179, 305);
             this.dataGridViewTransactionByPUser.TabIndex = 0;
             // 
             // ColumnPUserStaffNo
@@ -1277,7 +1315,7 @@
             this.tabPageRaceCards.Location = new System.Drawing.Point(4, 22);
             this.tabPageRaceCards.Name = "tabPageRaceCards";
             this.tabPageRaceCards.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRaceCards.Size = new System.Drawing.Size(956, 362);
+            this.tabPageRaceCards.Size = new System.Drawing.Size(1190, 362);
             this.tabPageRaceCards.TabIndex = 5;
             this.tabPageRaceCards.Text = "RaceCards";
             this.tabPageRaceCards.UseVisualStyleBackColor = true;
@@ -1607,11 +1645,21 @@
             this.gbEditUsers.TabIndex = 10;
             this.gbEditUsers.TabStop = false;
             // 
+            // ExportTransactionsByPUser
+            // 
+            this.ExportTransactionsByPUser.Location = new System.Drawing.Point(928, 15);
+            this.ExportTransactionsByPUser.Name = "ExportTransactionsByPUser";
+            this.ExportTransactionsByPUser.Size = new System.Drawing.Size(75, 23);
+            this.ExportTransactionsByPUser.TabIndex = 13;
+            this.ExportTransactionsByPUser.Text = "Export";
+            this.ExportTransactionsByPUser.UseVisualStyleBackColor = true;
+            this.ExportTransactionsByPUser.Click += new System.EventHandler(this.ExportTransactionsByPUser_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 471);
+            this.ClientSize = new System.Drawing.Size(1222, 471);
             this.Controls.Add(this.gbEditUsers);
             this.Controls.Add(this.gbBranch);
             this.Controls.Add(this.gbEditEntities);
@@ -1791,6 +1839,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ScannedFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn CapturedBy;
         private System.Windows.Forms.GroupBox gbEditUsers;
+        private System.Windows.Forms.Button ExportTransactions;
+        private System.Windows.Forms.Button ExportBranchFigures;
+        private System.Windows.Forms.Button ExportTransactonsByPBranch;
+        private System.Windows.Forms.Button ExportTransactionsByPUser;
     }
 }
 
