@@ -130,6 +130,7 @@
             this.ColumnNetOfBranchAndPBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageTransactionTotalByPUser = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ExportTransactionsByPUser = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePickerPUserAuditStart = new System.Windows.Forms.DateTimePicker();
@@ -173,7 +174,6 @@
             this.timer30sec = new System.Windows.Forms.Timer(this.components);
             this.prntdocTransactions = new System.Drawing.Printing.PrintDocument();
             this.gbEditUsers = new System.Windows.Forms.GroupBox();
-            this.ExportTransactionsByPUser = new System.Windows.Forms.Button();
             this.tpRecon.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbPendingTransfers.SuspendLayout();
@@ -682,7 +682,7 @@
             this.groupBox2.Controls.Add(this.cboxTransTypeFilter);
             this.groupBox2.Location = new System.Drawing.Point(9, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(941, 45);
+            this.groupBox2.Size = new System.Drawing.Size(1175, 45);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter";
@@ -785,7 +785,7 @@
             this.dgvCashbookEntries.ReadOnly = true;
             this.dgvCashbookEntries.RowHeadersVisible = false;
             this.dgvCashbookEntries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCashbookEntries.Size = new System.Drawing.Size(944, 190);
+            this.dgvCashbookEntries.Size = new System.Drawing.Size(1188, 190);
             this.dgvCashbookEntries.StandardTab = true;
             this.dgvCashbookEntries.TabIndex = 16;
             // 
@@ -1214,6 +1214,16 @@
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filter";
+            // 
+            // ExportTransactionsByPUser
+            // 
+            this.ExportTransactionsByPUser.Location = new System.Drawing.Point(928, 15);
+            this.ExportTransactionsByPUser.Name = "ExportTransactionsByPUser";
+            this.ExportTransactionsByPUser.Size = new System.Drawing.Size(75, 23);
+            this.ExportTransactionsByPUser.TabIndex = 13;
+            this.ExportTransactionsByPUser.Text = "Export";
+            this.ExportTransactionsByPUser.UseVisualStyleBackColor = true;
+            this.ExportTransactionsByPUser.Click += new System.EventHandler(this.ExportTransactionsByPUser_Click);
             // 
             // label8
             // 
@@ -1644,16 +1654,6 @@
             this.gbEditUsers.Size = new System.Drawing.Size(89, 53);
             this.gbEditUsers.TabIndex = 10;
             this.gbEditUsers.TabStop = false;
-            // 
-            // ExportTransactionsByPUser
-            // 
-            this.ExportTransactionsByPUser.Location = new System.Drawing.Point(928, 15);
-            this.ExportTransactionsByPUser.Name = "ExportTransactionsByPUser";
-            this.ExportTransactionsByPUser.Size = new System.Drawing.Size(75, 23);
-            this.ExportTransactionsByPUser.TabIndex = 13;
-            this.ExportTransactionsByPUser.Text = "Export";
-            this.ExportTransactionsByPUser.UseVisualStyleBackColor = true;
-            this.ExportTransactionsByPUser.Click += new System.EventHandler(this.ExportTransactionsByPUser_Click);
             // 
             // frmMain
             // 
