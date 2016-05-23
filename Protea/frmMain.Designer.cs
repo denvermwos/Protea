@@ -1217,9 +1217,9 @@
             // 
             // ExportTransactionsByPUser
             // 
-            this.ExportTransactionsByPUser.Location = new System.Drawing.Point(928, 15);
+            this.ExportTransactionsByPUser.Location = new System.Drawing.Point(904, 16);
             this.ExportTransactionsByPUser.Name = "ExportTransactionsByPUser";
-            this.ExportTransactionsByPUser.Size = new System.Drawing.Size(75, 23);
+            this.ExportTransactionsByPUser.Size = new System.Drawing.Size(75, 22);
             this.ExportTransactionsByPUser.TabIndex = 13;
             this.ExportTransactionsByPUser.Text = "Export";
             this.ExportTransactionsByPUser.UseVisualStyleBackColor = true;
@@ -1254,7 +1254,7 @@
             // 
             this.buttonDoPUserAudit.Location = new System.Drawing.Point(832, 15);
             this.buttonDoPUserAudit.Name = "buttonDoPUserAudit";
-            this.buttonDoPUserAudit.Size = new System.Drawing.Size(90, 23);
+            this.buttonDoPUserAudit.Size = new System.Drawing.Size(66, 23);
             this.buttonDoPUserAudit.TabIndex = 10;
             this.buttonDoPUserAudit.Text = "Search";
             this.buttonDoPUserAudit.UseVisualStyleBackColor = true;
